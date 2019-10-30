@@ -1,0 +1,35 @@
+.footer {
+  font-size: 16px;
+  padding: 1rem 1rem;
+  height: 4rem;
+  color: rgb(222, 237, 249);
+  background: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__copy {
+  margin-bottom: 0;
+}
+
+.footer__icons {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.footer__list-item {
+  margin-right: 1rem;
+}
+
+.footer__list-item:last-child {
+  margin-right: 0;
+}
+
+.footer__icon-link {
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(222, 237, 249);
+}
