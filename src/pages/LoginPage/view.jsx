@@ -1,12 +1,18 @@
 import React from 'react';
 
-import { Page, TextInput } from '../../components/common';
+import Page from '../../components/common/Page';
+import LoginForm from './components/LoginForm';
 import './style.css';
 
-function LoginPageView({ email, onChange }) {
+function LoginPageView({ email, password, onChange, onClick }) {
   return (
     <Page>
-      <TextInput name="email" value={email} onChange={onChange} />
+      <LoginForm
+        email={email}
+        password={password}
+        onChange={onChange}
+        onClick={onClick}
+      />
     </Page>
   );
 }

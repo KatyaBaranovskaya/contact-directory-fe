@@ -1,14 +1,17 @@
 import React from 'react';
 
-import LoginPageView from './view';
+import SignupView from './view';
 
-class LoginPage extends React.Component {
+class SignupPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      name: '',
+      surname: '',
       email: '',
       password: '',
+      confirmPassword: '',
     };
   }
 
@@ -22,10 +25,12 @@ class LoginPage extends React.Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { name, surname, email, password, confirmPassword } = this.state;
 
     return (
-      <LoginPageView
+      <SignupView
+        name={name}
+        surname={surname}
         email={email}
         password={password}
         onChange={this.handleChange}
@@ -35,4 +40,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default SignupPage;
