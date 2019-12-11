@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import Header from '../Header';
 import Footer from '../Footer';
 import './style.css';
+import classNames from "classnames";
 
-function Page({ children }) {
+function Page({ className, children }) {
   return (
     <div className="page__wrapper">
       <Header className="page__header" />
-      <div className="page__content">
+      <div className={classNames('page__content', className)}>
         {children}
       </div>
       <Footer className="page__footer" />

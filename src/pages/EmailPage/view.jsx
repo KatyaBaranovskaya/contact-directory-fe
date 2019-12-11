@@ -6,7 +6,7 @@ import EmailForm from "./components/EmailForm";
 
 function EmailPageView({ email, text, onChange, onClick }) {
   return (
-    <Page>
+    <Page className="email-page-content">
       <EmailForm
         email={email}
         text={text}

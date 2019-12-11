@@ -6,7 +6,7 @@ import SignupForm from './components/SignupForm';
 
 function SignupView({ name, surname, email, password, confirmPassword, onChange, onClick }) {
   return (
-    <Page>
+    <Page className="signup-page-content">
       <SignupForm
         name={name}
         surname={surname}

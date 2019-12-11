@@ -6,7 +6,7 @@ import './style.css';
 
 function ResetPasswordView({ password, confirmPassword, onChange, onClick }) {
   return (
-    <Page>
+    <Page className="reset-page-content">
       <ResetPasswordForm
         password={password}
         confirmPassword={confirmPassword}
