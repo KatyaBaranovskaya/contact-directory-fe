@@ -10,18 +10,20 @@ import UsersPage from "../pages/UsersPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import ContactDetailPage from "../pages/ContactDetailPage";
 import EmailPage from "../pages/EmailPage";
+import NotFound from "./common/NotFound";
 
 function App() {
   return (
     <Router>
       <HomePage path="/" />
-      <LoginPage path="login" />
-      <SignupPage path="signup" />
-      <ResetPasswordPage path="reset-password" />
-      <ContactsPage path="contacts" />
-      <ContactDetailPage path="contact-detail" />
-      <UsersPage path="users" />
-      <EmailPage path="email" />
+      <LoginPage path="/login" />
+      <SignupPage path="/signup" />
+      <ResetPasswordPage path="/reset-password" />
+      <ContactsPage path="/contacts" />
+      <ContactDetailPage path="/contact-detail" />
+      <UsersPage path="/users" />
+      <EmailPage path="/email" />
+      <NotFound default />
     </Router>
   );
 }
