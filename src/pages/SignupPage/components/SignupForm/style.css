@@ -18,6 +18,7 @@
 
 .signup-form__name,
 .signup-form__surname,
+.signup-form__lastname,
 .signup-form__email,
 .signup-form__password,
 .signup-form__confirmPassword,
@@ -31,6 +32,7 @@
 
 .signup-form__name,
 .signup-form__surname,
+.signup-form__lastname,
 .signup-form__email,
 .signup-form__password,
 .signup-form__confirmPassword {

@@ -11,13 +11,13 @@ function Header({className}) {
     <Navbar className={classNames('header', className)} variant="dark">
       <Navbar.Brand href="#home">CONTACT DIRECTORY</Navbar.Brand>
       <Nav className="mr-auto">
-        <Link to="contacts">CONTACTS</Link>
-        <Link to="users">USERS</Link>
+        <Link to="/contacts">CONTACTS</Link>
+        <Link to="/users">USERS</Link>
         <Link to="/">HOME</Link>
       </Nav>
       <Form inline>
         {/*<Link to="login">LOGOUT</Link>*/}
-        <Link to="login">LOGIN</Link>
+        <Link to="/login">LOGIN</Link>
       </Form>
     </Navbar>
   );
