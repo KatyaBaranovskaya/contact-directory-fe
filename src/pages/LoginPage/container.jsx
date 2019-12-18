@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import LoginPageView from './view';
 import ApiService from '../../services/apiService';
+import { APP_LIFE_CYCLE_EVENTS, AppLifecycle } from '../../services/events/appLifecycle';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -33,8 +34,7 @@ class LoginPage extends React.Component {
     })
       .then((response) => {
         this.setState({ isLoading: false, isSuccessfullySubmitted: true });
-        ApiService.setToken(response.data.token);
-        localStorage.setItem('token', response.data.token);
+        AppLifecycle.emit(APP_LIFE_CYCLE_EVENTS.LOGIN, response.data.token);
       })
       .catch((error) => {
         console.log(error);

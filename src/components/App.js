@@ -8,7 +8,6 @@ import LoginPage from '../pages/LoginPage';
 import SignupPage from '../pages/SignupPage';
 import ContactsPage from "../pages/ContactsPage";
 import UsersPage from "../pages/UsersPage";
-import ResetPasswordPage from "../pages/ResetPasswordPage";
 import ContactDetailPage from "../pages/ContactDetailPage";
 import EmailPage from "../pages/EmailPage";
 import NotFound from "./common/NotFound";
@@ -20,7 +19,6 @@ function App() {
         <HomePage path="/" />
         <LoginPage path="/login" />
         <SignupPage path="/signup" />
-        <ResetPasswordPage path="/reset-password" />
         <ContactsPage path="/contacts" />
         <ContactDetailPage path="/contact-detail" />
         <UsersPage path="/users" />

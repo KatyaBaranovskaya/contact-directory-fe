@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { APP_LIFE_CYCLE_EVENTS, AppLifecycle } from '../../../services/events/appLifecycle';
+import ApiService from "../../../services/apiService";
+
 const DEFAULT_VALUE = {
   token: null,
   user: null,
@@ -18,15 +21,52 @@ class TokenProvider extends React.Component {
   }
 
   componentDidMount() {
-    this.updateToken();
+    AppLifecycle.subscribe(APP_LIFE_CYCLE_EVENTS.LOGIN, this.handleLogin);
+    AppLifecycle.subscribe(APP_LIFE_CYCLE_EVENTS.LOGOUT, this.handleLogout);
+    this.updateTokenInfo();
   }
 
-  updateToken = () => {
-    // localStorage.getItem
-    // validate token
-    // parse token if it exists
-    // setToken in ApiService
-    this.setState({ isReady: true });
+  componentWillUnmount() {
+    AppLifecycle.removeListener(APP_LIFE_CYCLE_EVENTS.LOGIN, this.handleLogin);
+    AppLifecycle.removeListener(APP_LIFE_CYCLE_EVENTS.LOGOUT, this.handleLogout);
+  }
+
+  handleLogin = (token) => {
+    this.saveToken(token);
+    this.updateTokenInfo();
+  };
+
+  handleLogout = () => {
+    this.clearToken();
+    this.updateTokenInfo();
+  };
+
+  updateTokenInfo = () => {
+    const token = localStorage.getItem('token');
+    const newState = { isReady: true };
+
+    if (token) {
+      const user = {};
+      // parse token if it exists
+      newState.tokenInfo = {
+        token,
+        user,
+      };
+    } else {
+      newState.tokenInfo = { ...DEFAULT_VALUE };
+    }
+
+    this.setState(newState);
+  };
+
+  saveToken = (token) => {
+    localStorage.setItem('token', token);
+    ApiService.setToken(token);
+  };
+
+  clearToken = () => {
+    localStorage.removeItem('token');
+    ApiService.setToken(null);
   };
 
   render() {

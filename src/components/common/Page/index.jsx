@@ -5,16 +5,19 @@ import Header from '../Header';
 import Footer from '../Footer';
 import './style.css';
 import classNames from "classnames";
+import {TokenContext} from '../../handlers/TokenProvider/index';
 
-function Page({ className, children }) {
+function Page({className, children}) {
   return (
-    <div className="page__wrapper">
-      <Header className="page__header" />
-      <div className={classNames('page__content', className)}>
-        {children}
+    <TokenContext.Consumer>
+      <div className="page__wrapper">
+        <Header className="page__header"/>
+        <div className={classNames('page__content', className)}>
+          {children}
+        </div>
+        <Footer className="page__footer"/>
       </div>
-      <Footer className="page__footer" />
-    </div>
+    </TokenContext.Consumer>
   );
 }
 
