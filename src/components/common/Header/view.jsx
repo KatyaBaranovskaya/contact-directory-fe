@@ -3,10 +3,10 @@ import './style.css';
 import classNames from "classnames";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
 import { Link } from "@reach/router";
+import Button from "../Button";
 
-function Header({className}) {
+function HeaderView({ isAuthorized, className, onLogoutClick }) {
   return (
     <Navbar className={classNames('header', className)} variant="dark">
       <Navbar.Brand href="#home">CONTACT DIRECTORY</Navbar.Brand>
@@ -15,12 +15,12 @@ function Header({className}) {
         <Link to="/users">USERS</Link>
         <Link to="/">HOME</Link>
       </Nav>
-      <Form inline>
-        {/*<Link to="login">LOGOUT</Link>*/}
-        <Link to="/login">LOGIN</Link>
-      </Form>
+      {isAuthorized
+        ? <Button className="style" onClick={onLogoutClick} text="LOGOUT" />
+        : <Link to="/login">LOGIN</Link>
+      }
     </Navbar>
   );
 }
 
-export default Header;
+export default HeaderView;

@@ -36,12 +36,12 @@ class TokenProvider extends React.Component {
     this.updateTokenInfo();
   };
 
-  handleLogout = () => {
+  handleLogout = (callback) => {
     this.clearToken();
-    this.updateTokenInfo();
+    this.updateTokenInfo(callback);
   };
 
-  updateTokenInfo = () => {
+  updateTokenInfo = (callback) => {
     const token = localStorage.getItem('token');
     const newState = { isReady: true };
 
@@ -56,7 +56,7 @@ class TokenProvider extends React.Component {
       newState.tokenInfo = { ...DEFAULT_VALUE };
     }
 
-    this.setState(newState);
+    this.setState(newState, callback);
   };
 
   saveToken = (token) => {
