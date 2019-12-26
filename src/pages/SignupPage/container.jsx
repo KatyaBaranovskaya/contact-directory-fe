@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 
 import SignupView from './view';
 import ApiService from "../../services/apiService";
+import {navigate} from "@reach/router";
 
 class SignupPage extends React.Component {
   constructor(props) {
@@ -52,6 +52,7 @@ class SignupPage extends React.Component {
     })
       .then(() => {
         this.setState({ isLoading: false, isSuccessfullySubmitted: true });
+        navigate('/');
       })
       .catch((error) => {
         console.log(error);

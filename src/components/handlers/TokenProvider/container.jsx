@@ -31,9 +31,9 @@ class TokenProvider extends React.Component {
     AppLifecycle.removeListener(APP_LIFE_CYCLE_EVENTS.LOGOUT, this.handleLogout);
   }
 
-  handleLogin = (token) => {
+  handleLogin = (token, callback) => {
     this.saveToken(token);
-    this.updateTokenInfo();
+    this.updateTokenInfo(callback);
   };
 
   handleLogout = (callback) => {

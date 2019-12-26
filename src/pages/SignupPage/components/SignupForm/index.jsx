@@ -13,7 +13,7 @@ function SignupForm({ name, surname, lastname, email, password, confirmPassword,
       <TextInput className="signup-form__email" name="email" value={email} onChange={onChange} />
       <TextInput className="signup-form__password" name="password" type="password" value={password} onChange={onChange} />
       <TextInput className="signup-form__confirmPassword" name="confirmPassword" type="password" value={confirmPassword} onChange={onChange} />
-      <Button className="signup-form__btn" disabled={isLoading || isSuccessfullySubmitted} onClick={onClick} />
+      <Button className="signup-form__btn" disabled={isLoading || isSuccessfullySubmitted} onClick={onClick} text="SUBMIT" />
     </div>
   );
 }

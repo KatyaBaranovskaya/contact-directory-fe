@@ -9,12 +9,13 @@ import Button from "../Button";
 function HeaderView({ isAuthorized, className, onLogoutClick }) {
   return (
     <Navbar className={classNames('header', className)} variant="dark">
-      <Navbar.Brand href="#home">CONTACT DIRECTORY</Navbar.Brand>
-      <Nav className="mr-auto">
-        <Link to="/contacts">CONTACTS</Link>
-        <Link to="/users">USERS</Link>
-        <Link to="/">HOME</Link>
-      </Nav>
+      <Link to="/">CONTACT DIRECTORY</Link>
+      {isAuthorized && (
+        <Nav className="mr-auto">
+          <Link to="/contacts">CONTACTS</Link>
+          <Link to="/users">USERS</Link>
+        </Nav>
+      )}
       {isAuthorized
         ? <Button className="style" onClick={onLogoutClick} text="LOGOUT" />
         : <Link to="/login">LOGIN</Link>
