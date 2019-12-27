@@ -20,7 +20,7 @@ Button.defaultProps = {
 Button.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
-  disabled: PropTypes.boolean,
+  disabled: PropTypes.bool,
   text: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
