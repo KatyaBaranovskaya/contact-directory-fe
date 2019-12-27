@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Page from '../../components/common/Page';
-import './style.css';
 import SignupForm from './components/SignupForm';
+import './style.css';
 
 function SignupView({ name, surname, lastname, email, password, confirmPassword, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
   return (

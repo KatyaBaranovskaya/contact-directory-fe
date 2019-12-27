@@ -3,7 +3,7 @@ import React from 'react';
 import Page from '../../components/common/Page';
 import './style.css';
 
-function UsersPageiew() {
+function UsersPageView() {
   return (
     <Page>
       <span>Kitya on users page</span>
@@ -11,4 +11,4 @@ function UsersPageiew() {
   );
 }
 
-export default UsersPageiew;
+export default UsersPageView;

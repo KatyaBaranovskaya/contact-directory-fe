@@ -1,8 +1,8 @@
 import React  from 'react';
 
 import { TextInput, Button } from '../../../../components/common';
+import TextArea from '../../../../components/common/TextArea';
 import './style.css';
-import TextArea from "../../../../components/common/TextArea";
 
 function EmailForm({ email, text, onChange, onClick }) {
   return (

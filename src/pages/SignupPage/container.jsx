@@ -1,8 +1,8 @@
 import React from 'react';
+import {navigate} from '@reach/router';
 
 import SignupView from './view';
-import ApiService from "../../services/apiService";
-import {navigate} from "@reach/router";
+import ApiService from '../../services/apiService';
 
 class SignupPage extends React.Component {
   constructor(props) {

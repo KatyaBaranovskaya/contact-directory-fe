@@ -12,10 +12,6 @@ function TextArea({ name, value, onChange, className }) {
   );
 }
 
-TextArea.defaultProps = {
-  type: 'text',
-};
-
 TextArea.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,

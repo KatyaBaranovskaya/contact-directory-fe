@@ -1,10 +1,12 @@
 import React from 'react';
+import classNames from 'classnames';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import { Link } from '@reach/router';
+
+
+import Button from '../Button';
 import './style.css';
-import classNames from "classnames";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import { Link } from "@reach/router";
-import Button from "../Button";
 
 function HeaderView({ isAuthorized, className, onLogoutClick }) {
   return (

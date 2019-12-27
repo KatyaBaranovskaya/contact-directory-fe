@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import Header from '../Header';
 import Footer from '../Footer';
-import './style.css';
-import classNames from 'classnames';
 import { TokenContext } from '../../handlers/TokenProvider';
+import './style.css';
 
 function Page({ className, children }) {
   return (
@@ -18,8 +18,7 @@ function Page({ className, children }) {
           </div>
           <Footer className="page__footer" />
         </div>
-      )
-      }
+      )}
     </TokenContext.Consumer>
   );
 }

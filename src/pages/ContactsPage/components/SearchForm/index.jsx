@@ -1,6 +1,5 @@
 import React  from 'react';
 
-import { TextInput, Button } from '../../../../components/common';
 import './style.css';
 
 function SearchForm({ name, onChange, onClick }) {

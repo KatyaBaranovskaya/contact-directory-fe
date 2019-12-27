@@ -2,7 +2,7 @@ import React from 'react';
 import { navigate } from '@reach/router';
 
 import HeaderView from './view';
-import {APP_LIFE_CYCLE_EVENTS, AppLifecycle} from "../../../services/events/appLifecycle";
+import { APP_LIFE_CYCLE_EVENTS, AppLifecycle } from '../../../services/events/appLifecycle';
 
 class HeaderContainer extends React.Component {
 

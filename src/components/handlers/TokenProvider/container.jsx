@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { APP_LIFE_CYCLE_EVENTS, AppLifecycle } from '../../../services/events/appLifecycle';
-import ApiService from "../../../services/apiService";
+import ApiService from '../../../services/apiService';
 
 const DEFAULT_VALUE = {
   token: null,

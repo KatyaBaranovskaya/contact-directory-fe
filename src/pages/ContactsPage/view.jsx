@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Page from '../../components/common/Page';
+import SearchForm from './components/SearchForm';
 import './style.css';
-import SearchForm from "./components/SearchForm";
 
 function ContactsPageView({ name, onChange, onClick }) {
   return (

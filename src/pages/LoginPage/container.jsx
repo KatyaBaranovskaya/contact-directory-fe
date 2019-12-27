@@ -1,10 +1,9 @@
 import React from 'react';
-import axios from 'axios';
+import { navigate } from '@reach/router';
 
 import LoginPageView from './view';
 import ApiService from '../../services/apiService';
 import { APP_LIFE_CYCLE_EVENTS, AppLifecycle } from '../../services/events/appLifecycle';
-import {navigate} from "@reach/router";
 
 class LoginPage extends React.Component {
   constructor(props) {

@@ -14,11 +14,13 @@ function Button({ className, type, disabled, text, onClick }) {
 
 Button.defaultProps = {
   type: 'button',
+  disabled: false,
 };
 
 Button.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
+  disabled: PropTypes.boolean,
   text: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
