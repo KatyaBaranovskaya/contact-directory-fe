@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import Header from '../Header';
 import Footer from '../Footer';
+import { TokenContext } from '../../handlers/TokenProvider';
 import './style.css';
 
-function Page({ children }) {
+function Page({ className, children }) {
   return (
-    <div className="page__wrapper">
-      <Header className="page__header" />
-      <div className="page__content">
-        {children}
-      </div>
-      <Footer className="page__footer" />
-    </div>
+    <TokenContext.Consumer>
+      {(tokenInfo) => (
+        <div className="page__wrapper">
+          <Header className="page__header" isAuthorized={Boolean(tokenInfo.user)} />
+          <div className={classNames('page__content', className)}>
+            {children}
+          </div>
+          <Footer className="page__footer" />
+        </div>
+      )}
+    </TokenContext.Consumer>
   );
 }
 

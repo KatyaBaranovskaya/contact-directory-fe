@@ -1,24 +1,22 @@
-.login-form {
+.email-form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 2rem 2rem;
+    padding: 3rem 5rem;
     box-shadow: 0 0 2rem 0 rgba(222, 237, 249, 0.2), 0 1rem 1rem 0 rgba(39, 114, 144, 0.37);
     border-radius: 0.7rem;
     font-family: "Roboto", sans-serif;
-    height: 25rem;
-    width: 25rem;
 }
 
 
-.login-form__title {
-    font-size: 28px;
+.email-form__title {
+    font-size: 26px;
     color: #1f627b;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
-.login-form__email, .login-form__password, .login-form__btn {
+.email-form__email, .email-form__text, .email-form__btn {
     font-size: 14px;
     border: 0;
     margin: 1rem;
@@ -26,15 +24,14 @@
     border-radius: 0.3rem;
 }
 
-.login-form__email, .login-form__password {
+.email-form__email, .email-form__text {
     box-sizing: border-box;
     background: #e4f3ff;
-    width: 17rem;
 }
 
-.login-form__btn {
+.email-form__btn {
     background: #2e99b9;
     color: #FFFFFF;
     cursor: pointer;
-    padding: 0.5rem 1rem;
+    margin-top: 1rem;
 }

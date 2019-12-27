@@ -1,6 +1,9 @@
 import React from 'react';
+import { navigate } from '@reach/router';
 
 import LoginPageView from './view';
+import ApiService from '../../services/apiService';
+import { APP_LIFE_CYCLE_EVENTS, AppLifecycle } from '../../services/events/appLifecycle';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -9,6 +12,8 @@ class LoginPage extends React.Component {
     this.state = {
       email: '',
       password: '',
+      isLoading: false,
+      isSuccessfullySubmitted: false,
     };
   }
 
@@ -17,17 +22,35 @@ class LoginPage extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (event) => {
-    console.log('submit');
+  handleSubmit = () => {
+    const { email, password } = this.state;
+    this.setState({ isLoading: true });
+    ApiService.call({
+      method: 'post',
+      url: '/auth/login',
+      data: { email, password }
+    }, {
+      isAuthorizedRequest: false
+    })
+      .then((response) => {
+        this.setState({ isLoading: false, isSuccessfullySubmitted: true });
+        AppLifecycle.emit(APP_LIFE_CYCLE_EVENTS.LOGIN, response.data.token, () => navigate('/'));
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ isLoading: false });
+      });
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, isLoading, isSuccessfullySubmitted } = this.state;
 
     return (
       <LoginPageView
         email={email}
         password={password}
+        isLoading={isLoading}
+        isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={this.handleChange}
         onClick={this.handleSubmit}
       />

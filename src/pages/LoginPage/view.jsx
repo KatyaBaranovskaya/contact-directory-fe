@@ -4,12 +4,14 @@ import Page from '../../components/common/Page';
 import LoginForm from './components/LoginForm';
 import './style.css';
 
-function LoginPageView({ email, password, onChange, onClick }) {
+function LoginPageView({ email, password, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
   return (
-    <Page>
+    <Page className="login-page-content">
       <LoginForm
         email={email}
         password={password}
+        isLoading={isLoading}
+        isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={onChange}
         onClick={onClick}
       />
