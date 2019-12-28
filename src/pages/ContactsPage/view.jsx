@@ -8,7 +8,6 @@ import './style.css';
 function ContactsPageView({ columns, data, onChange, onClick }) {
   return (
     <Page>
-      <span>Kitya on contacts page</span>
       <SearchForm
         onChange={onChange}
         onClick={onClick}
