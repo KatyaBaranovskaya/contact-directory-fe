@@ -6,7 +6,6 @@ import './style.css';
 function HomePageView() {
   return (
     <Page>
-      <span>Kitya super-puper</span>
     </Page>
   );
 }
