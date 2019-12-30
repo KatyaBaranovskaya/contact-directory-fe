@@ -38,3 +38,14 @@
     cursor: pointer;
     padding: 0.5rem 1rem;
 }
+
+
+.login-form__link {
+    font-size: 15px;
+    color: #308dae;
+}
+
+.login-form__link:hover {
+    color: #1f6379;
+    text-decoration: none;
+}

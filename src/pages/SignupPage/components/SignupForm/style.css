@@ -7,13 +7,15 @@
     box-shadow: 0 0 2rem 0 rgba(222, 237, 249, 0.2), 0 1rem 1rem 0 rgba(39, 114, 144, 0.37);
     border-radius: 0.7rem;
     font-family: "Roboto", sans-serif;
+    height: 45rem;
+    width: 25rem;
 }
 
 
 .signup-form__title {
     font-size: 26px;
     color: #1f627b;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .signup-form__name,
@@ -38,11 +40,12 @@
 .signup-form__confirmPassword {
     box-sizing: border-box;
     background: #e4f3ff;
+    width: 17rem;
 }
 
 .signup-form__btn {
     background: #2e99b9;
     color: #FFFFFF;
     cursor: pointer;
-    margin-top: 1rem;
+    padding: 0.7rem 1.5rem;
 }
