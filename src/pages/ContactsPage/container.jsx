@@ -4,13 +4,16 @@ import ContactsPageView from './view';
 import ApiService from "../../services/apiService";
 
 const columns = [{
-  title: 'Name', dataIndex: 'name', key:'name', width: 100,
+  title: 'Name', dataIndex: 'name', key:'name', className: 'asd', render: (value) => {
+    console.log(value);
+    return value;
+  }
 },{
-  title: 'Surname', dataIndex: 'surname', key:'surname', width: 100,
+  title: 'Surname', dataIndex: 'surname', key:'surname',
 }, {
-  title: 'Birthday', dataIndex: 'birthday', key:'birthday', width: 100,
+  title: 'Birthday', dataIndex: 'birthday', key:'birthday',
 }, {
-  title: 'Country', dataIndex: 'country', key:'country', width: 100,
+  title: 'Country', dataIndex: 'country', key:'country',
 }];
 
 class ContactsPage extends React.Component {
