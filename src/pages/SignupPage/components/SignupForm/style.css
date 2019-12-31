@@ -11,41 +11,8 @@
     width: 25rem;
 }
 
-
 .signup-form__title {
     font-size: 26px;
     color: #1f627b;
     margin-bottom: 1.5rem;
-}
-
-.signup-form__name,
-.signup-form__surname,
-.signup-form__lastname,
-.signup-form__email,
-.signup-form__password,
-.signup-form__confirmPassword,
-.signup-form__btn {
-    font-size: 14px;
-    border: 0;
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 0.3rem;
-}
-
-.signup-form__name,
-.signup-form__surname,
-.signup-form__lastname,
-.signup-form__email,
-.signup-form__password,
-.signup-form__confirmPassword {
-    box-sizing: border-box;
-    background: #e4f3ff;
-    width: 17rem;
-}
-
-.signup-form__btn {
-    background: #2e99b9;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding: 0.7rem 1.5rem;
 }

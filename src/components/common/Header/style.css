@@ -12,8 +12,12 @@
   font-size: 24px;
   border: 0.3rem double rgb(222, 237, 249);
   color: rgb(222, 237, 249);
-  text-decoration: none;
   padding: 0.5rem;
+}
+
+.header__logo:hover {
+  text-decoration: none;
+  color: rgba(228, 243, 255, 0.55);
 }
 
 .header__nav {

@@ -7,7 +7,6 @@ import './style.css';
 function ContactsPageView({ name, onChange, onClick }) {
   return (
     <Page>
-      <span>Kitya on contacts page</span>
       <SearchForm
         name={name}
         onChange={onChange}

@@ -6,7 +6,7 @@ import './style.css';
 
 function EmailPageView({ email, text, onChange, onClick }) {
   return (
-    <Page className="email-page-content">
+    <Page className="email-page__content">
       <EmailForm
         email={email}
         text={text}

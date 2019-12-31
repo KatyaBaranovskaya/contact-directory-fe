@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from "classnames";
+
+import './style.css';
 
 function TextInput({ type, placeholder, name, value, onChange, className }) {
   return (
     <input
-      className={className}
+      className={classNames(className || 'text-input')}
       type={type}
       placeholder={placeholder}
       name={name}

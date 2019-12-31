@@ -11,34 +11,11 @@
     width: 25rem;
 }
 
-
 .login-form__title {
     font-size: 28px;
     color: #1f627b;
     margin-bottom: 1rem;
 }
-
-.login-form__email, .login-form__password, .login-form__btn {
-    font-size: 14px;
-    border: 0;
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 0.3rem;
-}
-
-.login-form__email, .login-form__password {
-    box-sizing: border-box;
-    background: #e4f3ff;
-    width: 17rem;
-}
-
-.login-form__btn {
-    background: #2e99b9;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-}
-
 
 .login-form__link {
     font-size: 15px;

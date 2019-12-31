@@ -1,10 +1,10 @@
-.home-page-content {
+.home-page__content {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.home-page-img {
+.home-page__img {
     width: 900px;
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Page from '../../components/common/Page';
-import HomeImg from '../../assets/contacts.jpg';
+import homeImgSrc from '../../assets/contacts.jpg';
 import './style.css';
 
 function HomePageView() {
   return (
-    <Page className="home-page-content">
-      <img className="home-page-img" src={HomeImg} alt="Home page image"/>
+    <Page className="home-page__content">
+      <img className="home-page__img" src={homeImgSrc} alt="Home page image"/>
     </Page>
   );
 }
