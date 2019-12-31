@@ -6,7 +6,7 @@ import './style.css';
 
 function LoginPageView({ email, password, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
   return (
-    <Page className="login-page-content">
+    <Page className="login-page__content">
       <LoginForm
         email={email}
         password={password}

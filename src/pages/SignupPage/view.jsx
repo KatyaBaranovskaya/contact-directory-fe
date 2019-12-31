@@ -6,7 +6,7 @@ import './style.css';
 
 function SignupView({ name, surname, lastname, email, password, confirmPassword, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
   return (
-    <Page className="signup-page-content">
+    <Page className="signup-page__content">
       <SignupForm
         name={name}
         surname={surname}

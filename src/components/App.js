@@ -6,7 +6,7 @@ import TokenProvider from '../components/handlers/TokenProvider';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import SignupPage from '../pages/SignupPage';
-import ContactsPage from "../pages/ContactsPage";
+import ContactsPage from '../pages/ContactsPage';
 import UsersPage from '../pages/UsersPage';
 import ContactDetailPage from '../pages/ContactDetailPage';
 import EmailPage from '../pages/EmailPage';

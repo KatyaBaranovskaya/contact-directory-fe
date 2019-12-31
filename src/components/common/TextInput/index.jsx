@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TextInput({ type, name, value, onChange, className }) {
+import './style.css';
+
+function TextInput({ type, placeholder, name, value, onChange, className }) {
   return (
     <input
-      className={className}
+      className={className || 'text-input'}
       type={type}
+      placeholder={placeholder}
       name={name}
       value={value}
       onChange={onChange}
@@ -19,6 +22,7 @@ TextInput.defaultProps = {
 
 TextInput.propTypes = {
   type: PropTypes.oneOf(['text', 'password']),
+  placeholder: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
