@@ -9,6 +9,7 @@ function TableWrapper({ columns, data }) {
       rowKey='id'
       columns={columns}
       data={data}
+      className="table"
       rowClassName="table-row"
       onHeaderRow={() => ({
         className: 'table-header-row'
