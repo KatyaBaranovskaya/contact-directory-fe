@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router } from '@reach/router';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { NotificationContainer } from 'react-notifications';
 
 import TokenProvider from '../components/handlers/TokenProvider';
 import HomePage from '../pages/HomePage';
@@ -25,6 +26,7 @@ function App() {
         <EmailPage path="/email" />
         <NotFound default />
       </Router>
+      <NotificationContainer/>
     </TokenProvider>
   );
 }

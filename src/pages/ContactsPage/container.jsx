@@ -1,4 +1,5 @@
 import React from 'react';
+import { NotificationManager } from 'react-notifications';
 
 import ContactsPageView from './view';
 import ApiService from "../../services/apiService";
@@ -57,7 +58,7 @@ class ContactsPage extends React.Component {
       checkedList.push(data.id);
     }
 
-    this.setState({ checkedList: checkedList });
+    this.setState({ checkedList });
   };
 
   handleCreate = () => {
@@ -65,7 +66,20 @@ class ContactsPage extends React.Component {
   };
 
   handleDelete = () => {
-    console.log("Delete");
+    const { checkedList } = this.state;
+
+    ApiService.call({
+      method: 'delete',
+      url: `/contacts?id=${checkedList}`,
+    })
+      .then(() => {
+        NotificationManager.success('Contacts were deleted successfully', 'Successfully');
+        this.setState({ checkedList: [] });
+        this.fetchData();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   handleSendEmail = () => {
