@@ -22,7 +22,7 @@ class EmailPage extends React.Component {
   componentDidMount() {
     const queryParams = queryString.parse(this.props.location.search);
     const { ids } = queryParams;
-    if (ids){
+    if (ids) {
       this.fetchData(ids);
     }
   }
