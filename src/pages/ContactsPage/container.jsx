@@ -3,7 +3,7 @@ import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
 
 import ContactsPageView from './view';
-import ApiService from "../../services/apiService";
+import ApiService from '../../services/apiService';
 
 class ContactsPage extends React.Component {
   constructor(props) {
@@ -86,7 +86,11 @@ class ContactsPage extends React.Component {
   handleSendEmail = () => {
     const { checkedList } = this.state;
 
-    navigate('/email/' + checkedList);
+    const url = checkedList.length > 0 ?
+      `/email?ids=${checkedList}` :
+      '/email';
+
+    navigate(url);
   };
 
   render() {

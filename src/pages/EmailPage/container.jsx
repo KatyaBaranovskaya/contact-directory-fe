@@ -1,9 +1,10 @@
 import React from 'react';
+import queryString from 'query-string'
 import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
 
 import EmailPageView from './view';
-import ApiService from "../../services/apiService";
+import ApiService from '../../services/apiService';
 
 class EmailPage extends React.Component {
   constructor(props) {
@@ -19,17 +20,17 @@ class EmailPage extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.id){
-      this.fetchData();
+    const queryParams = queryString.parse(this.props.location.search);
+    const ids = queryParams.ids;
+    if (ids){
+      this.fetchData(ids);
     }
   }
 
-  fetchData = () => {
-    const { id } = this.props;
-
+  fetchData = (ids) => {
     ApiService.call({
       method: 'get',
-      url: `/contacts/email?id=${id}`,
+      url: `/contacts/email?id=${ids}`,
     })
       .then((response) => {
         const emails = response.data.map(record => record.email);

@@ -24,7 +24,6 @@ function App() {
         <ContactDetailPage path="/contact-detail" />
         <UsersPage path="/users" />
         <EmailPage path="/email" />
-        <EmailPage path="/email/:id" />
         <NotFound default />
       </Router>
       <NotificationContainer/>
