@@ -21,7 +21,7 @@ class EmailPage extends React.Component {
 
   componentDidMount() {
     const queryParams = queryString.parse(this.props.location.search);
-    const ids = queryParams.ids;
+    const { ids } = queryParams;
     if (ids){
       this.fetchData(ids);
     }
@@ -69,8 +69,6 @@ class EmailPage extends React.Component {
       method: 'post',
       url: '/contacts/email',
       data: { emails: emails.split(','), title, message }
-    }, {
-      isAuthorizedRequest: true
     })
       .then(() => {
         this.setState({ isLoading: false, isSuccessfullySubmitted: true });
