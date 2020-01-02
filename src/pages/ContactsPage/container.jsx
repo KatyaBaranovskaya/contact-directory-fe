@@ -10,6 +10,14 @@ class ContactsPage extends React.Component {
     super(props);
 
     this.state = {
+      name: '',
+      surname: '',
+      lastname: '',
+      gender: '',
+      birthday: '',
+      country: '',
+      isLoading: false,
+      isSuccessfullySubmitted: false,
       data: [],
       pageCount: 0,
       currentPage: 0,
@@ -41,6 +49,15 @@ class ContactsPage extends React.Component {
           pageCount: 0,
         });
       });
+  };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  handleSearch = () => {
+    console.log("search");
   };
 
   handlePageClick = (data) => {
@@ -94,7 +111,7 @@ class ContactsPage extends React.Component {
   };
 
   render() {
-    const { data, pageCount } = this.state;
+    const { name, surname, lastname, gender, birthday, country, isLoading, isSuccessfullySubmitted, data, pageCount } = this.state;
     const columns = [
       {
         title: '',
@@ -115,6 +132,16 @@ class ContactsPage extends React.Component {
         key: 'surname',
       },
       {
+        title: 'Patronymic',
+        dataIndex: 'lastname',
+        key: 'lastname',
+      },
+      {
+        title: 'Gender',
+        dataIndex: 'gender',
+        key: 'gender',
+      },
+      {
         title: 'Birthday',
         dataIndex: 'birthday',
         key: 'birthday',
@@ -127,6 +154,16 @@ class ContactsPage extends React.Component {
 
     return (
       <ContactsPageView
+        name={name}
+        surname={surname}
+        lastname={lastname}
+        gender={gender}
+        birthday={birthday}
+        country={country}
+        isLoading={isLoading}
+        isSuccessfullySubmitted={isSuccessfullySubmitted}
+        onChange={this.handleChange}
+        onSearchClick={this.handleSearch}
         onCreateClick={this.handleCreate}
         onDeleteClick={this.handleDelete}
         onSendClick={this.handleSendEmail}

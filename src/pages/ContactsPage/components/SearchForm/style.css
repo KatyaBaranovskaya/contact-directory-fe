@@ -1,17 +1,10 @@
 .search-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 3rem 5rem;
-    box-shadow: 0 0 2rem 0 rgba(222, 237, 249, 0.2), 0 1rem 1rem 0 rgba(39, 114, 144, 0.37);
-    border-radius: 0.7rem;
     font-family: "Roboto", sans-serif;
-}
-
-
-.search-form__title {
-    font-size: 26px;
-    color: #1f627b;
-    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    min-height: 16rem;
 }

@@ -1,4 +1,5 @@
 @import '~react-notifications/lib/notifications.css';
+@import '~react-datepicker/dist/react-datepicker.css';
 
 body {
     margin: 0;
