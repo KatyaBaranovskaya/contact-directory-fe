@@ -4,12 +4,15 @@ import Page from '../../components/common/Page';
 import EmailForm from './components/EmailForm';
 import './style.css';
 
-function EmailPageView({ email, text, onChange, onClick }) {
+function EmailPageView({ emails, title, message, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
   return (
     <Page className="email-page__content">
       <EmailForm
-        email={email}
-        text={text}
+        emails={emails}
+        title={title}
+        message={message}
+        isLoading={isLoading}
+        isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={onChange}
         onClick={onClick}
       />

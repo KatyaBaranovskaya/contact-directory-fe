@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-function Textarea({ name, value, onChange, className }) {
+import './style.css';
+
+function Textarea({ placeholder, name, value, onChange, className }) {
   return (
     <textarea
-      className={className}
+      className={classNames('textarea', className)}
+      placeholder={placeholder}
       name={name}
       value={value}
       onChange={onChange}
@@ -13,6 +17,7 @@ function Textarea({ name, value, onChange, className }) {
 }
 
 Textarea.propTypes = {
+  placeholder: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
