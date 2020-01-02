@@ -49,7 +49,7 @@ class ContactsPage extends React.Component {
   };
 
   handleCheckboxChange = (data) => {
-    const checkedList = [ ...this.state.checkedList];
+    const checkedList = [...this.state.checkedList];
 
     const index = checkedList.indexOf(data.id);
     if (index !== -1) {
