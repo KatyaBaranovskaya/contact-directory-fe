@@ -24,8 +24,8 @@ function Pagination({ pageCount, onPageChange, className }) {
       previousLinkClassName="pagination__previous-link"
       nextLinkClassName="pagination__next-link"
       breakLinkClassName="pagination__break-link"
-      disabledClassName="page-item_disabled"
-      activeClassName="page-item_active"
+      disabledClassName="pagination__page-item_disabled"
+      activeClassName="pagination__page-item_active"
     />
   );
 }
