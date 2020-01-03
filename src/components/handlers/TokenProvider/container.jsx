@@ -32,12 +32,12 @@ class TokenProvider extends React.Component {
   }
 
   handleLogin = (token, callback) => {
-    this.saveToken(token);
+    localStorage.setItem('token', token);
     this.updateTokenInfo(callback);
   };
 
   handleLogout = (callback) => {
-    this.clearToken();
+    localStorage.removeItem('token');
     this.updateTokenInfo(callback);
   };
 
@@ -56,17 +56,8 @@ class TokenProvider extends React.Component {
       newState.tokenInfo = { ...DEFAULT_VALUE };
     }
 
+    ApiService.setToken(newState.tokenInfo.token);
     this.setState(newState, callback);
-  };
-
-  saveToken = (token) => {
-    localStorage.setItem('token', token);
-    ApiService.setToken(token);
-  };
-
-  clearToken = () => {
-    localStorage.removeItem('token');
-    ApiService.setToken(null);
   };
 
   render() {

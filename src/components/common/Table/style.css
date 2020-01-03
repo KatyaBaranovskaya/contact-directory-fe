@@ -1,0 +1,23 @@
+.table-wrapper table {
+    width: 100%;
+}
+
+.table-wrapper th, td {
+    padding: 0.7rem;
+}
+
+.table-wrapper__row, .table-wrapper__header-row {
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-wrapper__header-row th{
+    background-color: #deedf9;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+}
+
+.table-wrapper__pagination {
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
