@@ -6,7 +6,6 @@ import './style.css';
 function UsersPageView() {
   return (
     <Page>
-      <span>Kitya on users page</span>
     </Page>
   );
 }

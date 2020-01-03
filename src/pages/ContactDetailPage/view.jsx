@@ -6,7 +6,6 @@ import './style.css';
 function ContactDetailPageView() {
   return (
     <Page>
-      <span>Kitya on ContactDetailPage</span>
     </Page>
   );
 }

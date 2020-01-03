@@ -11,16 +11,16 @@ import './style.css';
 function HeaderView({ isAuthorized, className, onLogoutClick }) {
   return (
     <Navbar className={classNames('header', className)} variant="dark">
-      <Link to="/">CONTACT DIRECTORY</Link>
+      <Link className="header__logo" to="/">CONTACT DIRECTORY</Link>
       {isAuthorized && (
-        <Nav className="mr-auto">
-          <Link to="/contacts">CONTACTS</Link>
-          <Link to="/users">USERS</Link>
+        <Nav className="mr-auto header__nav">
+          <Link className="header__link" to="/contacts">CONTACTS</Link>
+          <Link className="header__link" to="/users">USERS</Link>
         </Nav>
       )}
       {isAuthorized
-        ? <Button className="style" onClick={onLogoutClick} text="LOGOUT" />
-        : <Link to="/login">LOGIN</Link>
+        ? <Button className="header__btn" onClick={onLogoutClick} text="LOGOUT" />
+        : <Link className="header__btn" to="/login">LOGIN</Link>
       }
     </Navbar>
   );
