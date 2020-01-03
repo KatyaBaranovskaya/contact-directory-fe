@@ -1,26 +1,37 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
+import PropTypes from 'prop-types';
 
 import './style.css';
 
-function PaginationWrapper({ pageCount, onPageChange }) {
+function Pagination({ pageCount, onPageChange }) {
   return (
     <ReactPaginate
-      previousLabel={'previous'}
-      nextLabel={'next'}
-      breakLabel={'...'}
-      breakClassName={'break-me'}
+      previousLabel="&laquo;"
+      nextLabel="&raquo;"
+      breakLabel="..."
       pageCount={pageCount}
       marginPagesDisplayed={1}
       pageRangeDisplayed={2}
       onPageChange={onPageChange}
-      containerClassName={"pagination"}
-      previousLinkClassName={"previous_page"}
-      nextLinkClassName={"next_page"}
-      disabledClassName={"disabled"}
-      activeClassName={"active"}
+      containerClassName="pagination"
+      pageClassName="pagination__page-item"
+      previousClassName="pagination__previous-item"
+      nextClassName="pagination__next-item"
+      breakClassName="pagination__break-item"
+      pageLinkClassName="pagination__page-link"
+      previousLinkClassName="pagination__previous-link"
+      nextLinkClassName="pagination__next-link"
+      breakLinkClassName="pagination__break-link"
+      disabledClassName="disabled"
+      activeClassName="active"
     />
   );
 }
 
-export default PaginationWrapper;
+Pagination.propTypes = {
+  pageCount: PropTypes.number,
+  onPageChange: PropTypes.func.isRequired,
+};
+
+export default Pagination;

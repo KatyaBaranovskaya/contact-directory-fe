@@ -6,3 +6,7 @@
 .contacts-page__button-wrapper {
   margin-left: 1rem;
 }
+
+.contacts-page__table {
+  padding: 1rem;
+}

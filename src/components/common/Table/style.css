@@ -1,15 +1,18 @@
-.table {
-    /*width: 100%;*/
-    margin: 1rem;
+.table-wrapper table {
+    width: 100%;
 }
 
-.table-row, .table-header-row {
+.table-wrapper th, td {
+    padding: 0.7rem;
+}
+
+.table-wrapper-row, .table-wrapper-header-row {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-.table-header-row {
+.table-wrapper-header-row th{
     background-color: #deedf9;
     font-family: "Roboto", sans-serif;
     font-size: 18px;

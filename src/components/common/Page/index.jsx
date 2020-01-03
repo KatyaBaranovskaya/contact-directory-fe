@@ -24,6 +24,7 @@ function Page({ className, children }) {
 }
 
 Page.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 

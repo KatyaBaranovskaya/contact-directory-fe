@@ -3,9 +3,8 @@ import React from 'react';
 import Page from '../../components/common/Page';
 import SearchForm from './components/SearchForm';
 import Table from '../../components/common/Table';
-import Pagination from '../../components/common/Pagination';
-import './style.css';
 import Button from '../../components/common/Button/index';
+import './style.css';
 
 function ContactsPageView({ onCreateClick, onDeleteClick, onSendClick, columns, data, pageCount, onPageChange }) {
   return (
@@ -19,10 +18,9 @@ function ContactsPageView({ onCreateClick, onDeleteClick, onSendClick, columns, 
       <Table
         columns={columns}
         data={data}
-      />
-      <Pagination
         pageCount={pageCount}
         onPageChange={onPageChange}
+        className="contacts-page__table"
       />
     </Page>
   );
