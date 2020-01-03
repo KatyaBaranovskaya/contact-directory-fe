@@ -24,15 +24,15 @@ function Pagination({ pageCount, onPageChange, className }) {
       previousLinkClassName="pagination__previous-link"
       nextLinkClassName="pagination__next-link"
       breakLinkClassName="pagination__break-link"
-      disabledClassName="disabled"
-      activeClassName="active"
+      disabledClassName="page-item_disabled"
+      activeClassName="page-item_active"
     />
   );
 }
 
 Pagination.propTypes = {
   className: PropTypes.string,
-  pageCount: PropTypes.number,
+  pageCount: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
 };
 

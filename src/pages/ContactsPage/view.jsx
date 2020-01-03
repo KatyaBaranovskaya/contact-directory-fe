@@ -3,7 +3,7 @@ import React from 'react';
 import Page from '../../components/common/Page';
 import SearchForm from './components/SearchForm';
 import Table from '../../components/common/Table';
-import Button from '../../components/common/Button/index';
+import Button from '../../components/common/Button';
 import './style.css';
 
 function ContactsPageView({ onCreateClick, onDeleteClick, onSendClick, columns, data, pageCount, onPageChange }) {

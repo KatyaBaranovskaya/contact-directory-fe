@@ -1,7 +1,7 @@
 import React  from 'react';
 
 import { TextInput, Button } from '../../../../components/common';
-import TextArea from '../../../../components/common/TextArea';
+import Textarea from '../../../../components/common/TextArea';
 import './style.css';
 
 function EmailForm({ email, text, onChange, onClick }) {
@@ -14,7 +14,7 @@ function EmailForm({ email, text, onChange, onClick }) {
         value={email}
         onChange={onChange}
       />
-      <TextArea
+      <Textarea
         className="email-form__text"
         name="text"
         value={text}

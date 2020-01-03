@@ -29,6 +29,11 @@ function TableWrapper({ columns, data, pageCount, onPageChange, className }) {
   );
 }
 
+TableWrapper.defaultProps = {
+  columns: [],
+  data: [],
+};
+
 TableWrapper.propTypes = {
   columns: PropTypes.array,
   data: PropTypes.array,
