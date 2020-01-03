@@ -11,9 +11,9 @@ function ContactsPageView({ onCreateClick, onDeleteClick, onSendClick, columns, 
     <Page className="contacts-page__content">
       <SearchForm />
       <div className="contacts-page__button-wrapper">
-        <Button className="btn" onClick={onCreateClick} text="CREATE" />
-        <Button className="btn" onClick={onDeleteClick} text="DELETE" />
-        <Button className="btn" onClick={onSendClick} text="SEND EMAIL" />
+        <Button onClick={onCreateClick} text="CREATE" />
+        <Button onClick={onDeleteClick} text="DELETE" />
+        <Button onClick={onSendClick} text="SEND EMAIL" />
       </div>
       <Table
         columns={columns}
