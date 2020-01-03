@@ -1,0 +1,9 @@
+.search-form {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    min-height: 16rem;
+}
