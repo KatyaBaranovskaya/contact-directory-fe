@@ -4,22 +4,22 @@ import ContactsPageView from './view';
 import ApiService from "../../services/apiService";
 
 const columns = [{
-  title: '', dataIndex: 'checkbox', key:'checkbox', render: (value) => {
-    return(
+  title: '', dataIndex: 'checkbox', key: 'checkbox', render: (value) => {
+    return (
       <input
         type="checkbox"
         // onChange={onChange}
       />
     );
   }
-},{
-  title: 'Name', dataIndex: 'name', key:'name',
 }, {
-  title: 'Surname', dataIndex: 'surname', key:'surname',
+  title: 'Name', dataIndex: 'name', key: 'name',
 }, {
-  title: 'Birthday', dataIndex: 'birthday', key:'birthday',
+  title: 'Surname', dataIndex: 'surname', key: 'surname',
 }, {
-  title: 'Country', dataIndex: 'country', key:'country',
+  title: 'Birthday', dataIndex: 'birthday', key: 'birthday',
+}, {
+  title: 'Country', dataIndex: 'country', key: 'country',
 }];
 
 class ContactsPage extends React.Component {
@@ -29,17 +29,20 @@ class ContactsPage extends React.Component {
     this.state = {
       data: [],
       pageCount: 0,
+      currentPage: 0,
     };
   }
 
   componentDidMount() {
-    this.init();
+    this.fetchData();
   }
 
-  init = () => {
+  fetchData = () => {
+    const { currentPage } = this.state;
+
     ApiService.call({
       method: 'get',
-      url: '/contacts',
+      url: `/contacts?page=${currentPage}&size=2`,
     })
       .then((response) => {
         this.setState({
@@ -49,11 +52,17 @@ class ContactsPage extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        this.setState({
+          data: [],
+          pageCount: 0,
+        });
       });
   };
 
-  handlePageClick = () => {
-    console.log(1);
+  handlePageClick = (data) => {
+    this.setState({
+      currentPage: data.selected,
+    }, this.fetchData);
   };
 
   handleCreate = () => {

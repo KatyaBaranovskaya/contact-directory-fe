@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './style.css';
 
-function Pagination({ pageCount, onPageChange }) {
+function Pagination({ pageCount, onPageChange, className }) {
   return (
     <ReactPaginate
       previousLabel="&laquo;"
@@ -14,7 +15,7 @@ function Pagination({ pageCount, onPageChange }) {
       marginPagesDisplayed={1}
       pageRangeDisplayed={2}
       onPageChange={onPageChange}
-      containerClassName="pagination"
+      containerClassName={classNames('pagination', className)}
       pageClassName="pagination__page-item"
       previousClassName="pagination__previous-item"
       nextClassName="pagination__next-item"
@@ -30,6 +31,7 @@ function Pagination({ pageCount, onPageChange }) {
 }
 
 Pagination.propTypes = {
+  className: PropTypes.string,
   pageCount: PropTypes.number,
   onPageChange: PropTypes.func.isRequired,
 };

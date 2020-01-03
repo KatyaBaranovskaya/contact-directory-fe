@@ -13,15 +13,18 @@ function TableWrapper({ columns, data, pageCount, onPageChange, className }) {
         columns={columns}
         data={data}
         className="table-wrapper"
-        rowClassName="table-wrapper-row"
+        rowClassName="table-wrapper__row"
         onHeaderRow={() => ({
-          className: 'table-wrapper-header-row'
+          className: 'table-wrapper__header-row'
         })}
       />
-      <Pagination
-        pageCount={pageCount}
-        onPageChange={onPageChange}
-      />
+      {pageCount !== 0 && (
+        <Pagination
+          pageCount={pageCount}
+          onPageChange={onPageChange}
+          className="table-wrapper__pagination"
+        />
+      )}
     </div>
   );
 }

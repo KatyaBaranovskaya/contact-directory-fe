@@ -6,14 +6,18 @@
     padding: 0.7rem;
 }
 
-.table-wrapper-row, .table-wrapper-header-row {
+.table-wrapper__row, .table-wrapper__header-row {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-.table-wrapper-header-row th{
+.table-wrapper__header-row th{
     background-color: #deedf9;
     font-family: "Roboto", sans-serif;
     font-size: 18px;
+}
+
+.table-wrapper__pagination {
+    margin-top: 1rem;
 }
