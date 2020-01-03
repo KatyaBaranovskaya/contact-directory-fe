@@ -5,7 +5,6 @@ import UsersPageView from './view';
 import ApiService from '../../services/apiService';
 import { filterSearchParams } from '../../helpers/search';
 import { Toggle } from '../../components/common';
-import {navigate} from "@reach/router";
 
 class UsersPage extends React.Component {
   constructor(props) {
