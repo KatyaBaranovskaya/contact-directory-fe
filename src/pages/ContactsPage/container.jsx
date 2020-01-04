@@ -1,26 +1,8 @@
 import React from 'react';
+import { NotificationManager } from 'react-notifications';
 
 import ContactsPageView from './view';
 import ApiService from "../../services/apiService";
-
-const columns = [{
-  title: '', dataIndex: 'checkbox', key: 'checkbox', render: (value) => {
-    return (
-      <input
-        type="checkbox"
-        // onChange={onChange}
-      />
-    );
-  }
-}, {
-  title: 'Name', dataIndex: 'name', key: 'name',
-}, {
-  title: 'Surname', dataIndex: 'surname', key: 'surname',
-}, {
-  title: 'Birthday', dataIndex: 'birthday', key: 'birthday',
-}, {
-  title: 'Country', dataIndex: 'country', key: 'country',
-}];
 
 class ContactsPage extends React.Component {
   constructor(props) {
@@ -30,6 +12,7 @@ class ContactsPage extends React.Component {
       data: [],
       pageCount: 0,
       currentPage: 0,
+      checkedList: [],
     };
   }
 
@@ -65,12 +48,38 @@ class ContactsPage extends React.Component {
     }, this.fetchData);
   };
 
+  handleCheckboxChange = (data) => {
+    const checkedList = [...this.state.checkedList];
+
+    const index = checkedList.indexOf(data.id);
+    if (index !== -1) {
+      checkedList.splice(index, 1);
+    } else {
+      checkedList.push(data.id);
+    }
+
+    this.setState({ checkedList });
+  };
+
   handleCreate = () => {
     console.log("Create");
   };
 
   handleDelete = () => {
-    console.log("Delete");
+    const { checkedList } = this.state;
+
+    ApiService.call({
+      method: 'delete',
+      url: `/contacts?id=${checkedList}`,
+    })
+      .then(() => {
+        NotificationManager.success('Contacts were deleted successfully', 'Successfully');
+        this.setState({ checkedList: [] });
+        this.fetchData();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   handleSendEmail = () => {
@@ -79,6 +88,36 @@ class ContactsPage extends React.Component {
 
   render() {
     const { data, pageCount } = this.state;
+    const columns = [
+      {
+        title: '',
+        dataIndex: 'checkbox',
+        key: 'checkbox',
+        render: (value, record) => (
+          <input type="checkbox" onChange={() => this.handleCheckboxChange(record)} />
+        )
+      },
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: 'Surname',
+        dataIndex: 'surname',
+        key: 'surname',
+      },
+      {
+        title: 'Birthday',
+        dataIndex: 'birthday',
+        key: 'birthday',
+      },
+      {
+        title: 'Country',
+        dataIndex: 'country',
+        key: 'country',
+      }];
+
     return (
       <ContactsPageView
         onCreateClick={this.handleCreate}
