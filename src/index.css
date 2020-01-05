@@ -19,7 +19,7 @@ code {
     margin: 0;
 }
 
-html, body, #root, #root > div {
+html, body, #root, #root > div:first-child {
     height: 100%;
     min-height: 100%;
 }

@@ -46,3 +46,8 @@
   border: none;
   border-radius: 0.3rem;
 }
+
+.header__btn:hover {
+  text-decoration: none;
+  color: #2c3e50;
+}
