@@ -26,3 +26,7 @@
     color: #1f6379;
     text-decoration: none;
 }
+
+.login-form__btn {
+    margin: 1rem;
+}

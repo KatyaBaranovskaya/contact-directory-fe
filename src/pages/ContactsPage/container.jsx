@@ -1,19 +1,30 @@
 import React from 'react';
 import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
+import queryString from 'query-string'
 
 import ContactsPageView from './view';
 import ApiService from '../../services/apiService';
+import { filterSearchParams } from './helpers';
 
 class ContactsPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      name: '',
+      surname: '',
+      lastname: '',
+      gender: null,
+      birthday: null,
+      country: '',
+      isLoading: false,
+      isSuccessfullySubmitted: false,
       data: [],
       pageCount: 0,
       currentPage: 0,
       checkedList: [],
+      searchParams: {},
     };
   }
 
@@ -22,11 +33,16 @@ class ContactsPage extends React.Component {
   }
 
   fetchData = () => {
-    const { currentPage } = this.state;
+    const { currentPage, searchParams } = this.state;
+    const queryParams = queryString.stringify({
+      ...searchParams,
+      page: currentPage,
+      size: 10,
+    });
 
     ApiService.call({
       method: 'get',
-      url: `/contacts?page=${currentPage}&size=2`,
+      url: `/contacts?${queryParams}`,
     })
       .then((response) => {
         this.setState({
@@ -41,6 +57,49 @@ class ContactsPage extends React.Component {
           pageCount: 0,
         });
       });
+  };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  handleGenderChange = (gender) => {
+    this.setState({ gender: gender.value });
+  };
+
+  handleBirthdayChange = (birthday) => {
+    this.setState({ birthday });
+  };
+
+  handleSearch = () => {
+    const { name, surname, lastname, gender, birthday, country } = this.state;
+    const searchParams = {
+      name,
+      surname,
+      lastname,
+      gender,
+      birthday: birthday && birthday.toISOString().split('T')[0],
+      country,
+    };
+
+    this.setState({
+      searchParams: filterSearchParams(searchParams),
+      currentPage: 0,
+    }, this.fetchData);
+  };
+
+  handleClear = () => {
+    this.setState({
+      name: '',
+      surname: '',
+      lastname: '',
+      gender: null,
+      birthday: null,
+      country: '',
+      searchParams: {},
+      currentPage: 0,
+    }, this.fetchData);
   };
 
   handlePageClick = (data) => {
@@ -94,7 +153,7 @@ class ContactsPage extends React.Component {
   };
 
   render() {
-    const { data, pageCount } = this.state;
+    const { name, surname, lastname, gender, birthday, country, isLoading, isSuccessfullySubmitted, data, pageCount } = this.state;
     const columns = [
       {
         title: '',
@@ -115,6 +174,16 @@ class ContactsPage extends React.Component {
         key: 'surname',
       },
       {
+        title: 'Patronymic',
+        dataIndex: 'lastname',
+        key: 'lastname',
+      },
+      {
+        title: 'Gender',
+        dataIndex: 'gender',
+        key: 'gender',
+      },
+      {
         title: 'Birthday',
         dataIndex: 'birthday',
         key: 'birthday',
@@ -124,9 +193,28 @@ class ContactsPage extends React.Component {
         dataIndex: 'country',
         key: 'country',
       }];
+    const options = [
+      { value: null, label: 'N/A' },
+      { value: 'male', label: 'Male' },
+      { value: 'female', label: 'Female' },
+    ];
 
     return (
       <ContactsPageView
+        name={name}
+        surname={surname}
+        lastname={lastname}
+        gender={gender}
+        birthday={birthday}
+        country={country}
+        options={options}
+        isLoading={isLoading}
+        isSuccessfullySubmitted={isSuccessfullySubmitted}
+        onChange={this.handleChange}
+        onGenderChange={this.handleGenderChange}
+        onBirthdayChange={this.handleBirthdayChange}
+        onSearchClick={this.handleSearch}
+        onClearClick={this.handleClear}
         onCreateClick={this.handleCreate}
         onDeleteClick={this.handleDelete}
         onSendClick={this.handleSendEmail}

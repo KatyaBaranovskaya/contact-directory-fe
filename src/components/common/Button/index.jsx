@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './style.css';
 
 function Button({ className, type, disabled, text, onClick }) {
   return (
     <button
-      className={className || 'button'}
+      className={classNames('button', className)}
       type={type}
       disabled={disabled}
       onClick={onClick}

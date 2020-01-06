@@ -1,7 +1,7 @@
-import React  from 'react';
+import React from 'react';
 import { Link } from '@reach/router';
 
-import { TextInput, Button } from '../../../../components/common';
+import { Button, TextInput } from '../../../../components/common';
 import './style.css';
 
 function LoginForm({ email, password, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
@@ -22,6 +22,7 @@ function LoginForm({ email, password, isLoading, isSuccessfullySubmitted, onChan
         onChange={onChange}
       />
       <Button
+        className="login-form__btn"
         disabled={isLoading || isSuccessfullySubmitted}
         onClick={onClick}
         text="SUBMIT"
