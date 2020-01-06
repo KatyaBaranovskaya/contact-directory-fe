@@ -46,9 +46,21 @@ function ContactsPageView({
         onClearClick={onClearClick}
       />
       <div className="contacts-page__button-wrapper">
-        <Button onClick={onCreateClick} text="CREATE" />
-        <Button onClick={onDeleteClick} text="DELETE" />
-        <Button onClick={onSendClick} text="SEND EMAIL" />
+        <Button
+          className="contacts-page__btn"
+          onClick={onCreateClick}
+          text="CREATE"
+        />
+        <Button
+          className="contacts-page__btn"
+          onClick={onDeleteClick}
+          text="DELETE"
+        />
+        <Button
+          className="contacts-page__btn"
+          onClick={onSendClick}
+          text="SEND EMAIL"
+        />
       </div>
       <Table
         columns={columns}

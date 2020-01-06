@@ -70,7 +70,7 @@ function SearchForm({
           text="SEARCH"
         />
         <Button
-          // className="search-form__clear-btn"
+          className="search-form__clear-btn"
           disabled={isLoading || isSuccessfullySubmitted}
           onClick={onClearClick}
           text="CLEAR"

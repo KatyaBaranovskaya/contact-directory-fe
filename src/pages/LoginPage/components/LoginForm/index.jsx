@@ -22,6 +22,7 @@ function LoginForm({ email, password, isLoading, isSuccessfullySubmitted, onChan
         onChange={onChange}
       />
       <Button
+        className="login-form__btn"
         disabled={isLoading || isSuccessfullySubmitted}
         onClick={onClick}
         text="SUBMIT"

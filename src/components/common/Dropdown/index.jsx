@@ -14,13 +14,14 @@ function Dropdown({ placeholder, value, options, onChange, className }) {
       options={options}
       onChange={onChange}
       arrowClassName="dropdown-arrow"
+      placeholderClassName="dropdown-placeholder"
     />
   );
 }
 
 Dropdown.propTypes = {
   placeholder: PropTypes.string,
-  value: PropTypes.object,
+  value: PropTypes.string,
   options: PropTypes.array,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,

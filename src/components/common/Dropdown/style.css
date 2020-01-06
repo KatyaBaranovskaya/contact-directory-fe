@@ -14,3 +14,7 @@
     transform-origin: center;
     transform: translateY(-50%);
 }
+
+.dropdown-placeholder {
+    color: #7b777d;
+}

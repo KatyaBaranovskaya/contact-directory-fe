@@ -1,9 +1,11 @@
 import React from 'react';
 import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
+import queryString from 'query-string'
 
 import ContactsPageView from './view';
 import ApiService from '../../services/apiService';
+import { filterSearchParams } from './helpers';
 
 class ContactsPage extends React.Component {
   constructor(props) {
@@ -22,6 +24,7 @@ class ContactsPage extends React.Component {
       pageCount: 0,
       currentPage: 0,
       checkedList: [],
+      searchParams: {},
     };
   }
 
@@ -30,11 +33,16 @@ class ContactsPage extends React.Component {
   }
 
   fetchData = () => {
-    const { currentPage } = this.state;
+    const { currentPage, searchParams } = this.state;
+    const queryParams = queryString.stringify({
+      ...searchParams,
+      page: currentPage,
+      size: 10,
+    });
 
     ApiService.call({
       method: 'get',
-      url: `/contacts?page=${currentPage}&size=2`,
+      url: `/contacts?${queryParams}`,
     })
       .then((response) => {
         this.setState({
@@ -57,7 +65,7 @@ class ContactsPage extends React.Component {
   };
 
   handleGenderChange = (gender) => {
-    this.setState({ gender });
+    this.setState({ gender: gender.value });
   };
 
   handleBirthdayChange = (birthday) => {
@@ -65,11 +73,33 @@ class ContactsPage extends React.Component {
   };
 
   handleSearch = () => {
-    console.log("search");
+    const { name, surname, lastname, gender, birthday, country } = this.state;
+    const searchParams = {
+      name,
+      surname,
+      lastname,
+      gender,
+      birthday: birthday && birthday.toISOString().split('T')[0],
+      country,
+    };
+
+    this.setState({
+      searchParams: filterSearchParams(searchParams),
+      currentPage: 0,
+    }, this.fetchData);
   };
 
   handleClear = () => {
-    console.log("clear");
+    this.setState({
+      name: '',
+      surname: '',
+      lastname: '',
+      gender: null,
+      birthday: null,
+      country: '',
+      searchParams: {},
+      currentPage: 0,
+    }, this.fetchData);
   };
 
   handlePageClick = (data) => {
