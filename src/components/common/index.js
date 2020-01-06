@@ -5,6 +5,7 @@ import Page from './Page';
 import Table from './Table';
 import Textarea from './Textarea';
 import TextInput from './TextInput';
+import Toggle from './Toggle';
 
 export {
   Button,
@@ -14,4 +15,5 @@ export {
   Table,
   Textarea,
   TextInput,
+  Toggle,
 };

@@ -1,9 +1,31 @@
 .search-form {
     font-family: "Roboto", sans-serif;
+    padding: 3rem 1rem;
+}
+
+.search-form__fields-wrapper {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 1rem;
-    min-height: 16rem;
+}
+
+.search-form__submit-btn, .search-form__clear-btn {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    border: 0;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.search-form__submit-btn {
+    background: #2e99b9;
+    color: #FFFFFF;
+}
+
+.search-form__clear-btn {
+    background: rgb(237, 253, 255);
+    border: 1px solid #1f6379;
+    color: #1f6379;
 }
