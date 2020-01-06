@@ -195,8 +195,8 @@ class ContactsPage extends React.Component {
       }];
     const options = [
       { value: null, label: 'N/A' },
-      { value: 'male', label: 'male' },
-      { value: 'female', label: 'female' },
+      { value: 'male', label: 'Male' },
+      { value: 'female', label: 'Female' },
     ];
 
     return (

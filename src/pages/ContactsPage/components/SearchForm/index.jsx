@@ -4,21 +4,21 @@ import { Button, TextInput, DateInput, Dropdown } from '../../../../components/c
 import './style.css';
 
 function SearchForm({
-                      name,
-                      surname,
-                      lastname,
-                      gender,
-                      birthday,
-                      country,
-                      options,
-                      isLoading,
-                      isSuccessfullySubmitted,
-                      onChange,
-                      onGenderChange,
-                      onBirthdayChange,
-                      onSearchClick,
-                      onClearClick
-                    }) {
+  name,
+  surname,
+  lastname,
+  gender,
+  birthday,
+  country,
+  options,
+  isLoading,
+  isSuccessfullySubmitted,
+  onChange,
+  onGenderChange,
+  onBirthdayChange,
+  onSearchClick,
+  onClearClick
+}) {
   return (
     <div className="search-form">
       <div className="search-form__fields-wrapper">
