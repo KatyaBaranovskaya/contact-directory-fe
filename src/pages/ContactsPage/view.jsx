@@ -1,12 +1,32 @@
 import React from 'react';
 
-import Page from '../../components/common/Page';
+import { Page, Table, Button } from '../../components/common';
 import SearchForm from './components/SearchForm';
-import Table from '../../components/common/Table';
-import Button from '../../components/common/Button';
 import './style.css';
 
-function ContactsPageView({ name, surname, lastname, gender, birthday, country, isLoading, isSuccessfullySubmitted, onChange, onSearchClick, onCreateClick, onDeleteClick, onSendClick, columns, data, pageCount, onPageChange }) {
+function ContactsPageView({
+  name,
+  surname,
+  lastname,
+  gender,
+  birthday,
+  country,
+  options,
+  isLoading,
+  isSuccessfullySubmitted,
+  onChange,
+  onGenderChange,
+  onBirthdayChange,
+  onSearchClick,
+  onClearClick,
+  onCreateClick,
+  onDeleteClick,
+  onSendClick,
+  columns,
+  data,
+  pageCount,
+  onPageChange
+}) {
   return (
     <Page className="contacts-page__content">
       <SearchForm
@@ -16,10 +36,14 @@ function ContactsPageView({ name, surname, lastname, gender, birthday, country, 
         gender={gender}
         birthday={birthday}
         country={country}
+        options={options}
         isLoading={isLoading}
         isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={onChange}
+        onGenderChange={onGenderChange}
+        onBirthdayChange={onBirthdayChange}
         onSearchClick={onSearchClick}
+        onClearClick={onClearClick}
       />
       <div className="contacts-page__button-wrapper">
         <Button onClick={onCreateClick} text="CREATE" />

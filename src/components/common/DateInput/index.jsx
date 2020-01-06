@@ -1,22 +1,24 @@
 import React from 'react';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './style.css';
 
-function DateInput({ value, onChange, className }) {
+function DateInput({ placeholder, value, onChange, className }) {
   return (
     <DatePicker
       className={classNames('date-input', className)}
-      // selected={value}
+      placeholderText={placeholder}
+      selected={value}
       onChange={onChange}
     />
   );
 }
 
 DateInput.propTypes = {
-  // value: PropTypes.,
+  placeholder: PropTypes.string,
+  value: PropTypes.object,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
 };

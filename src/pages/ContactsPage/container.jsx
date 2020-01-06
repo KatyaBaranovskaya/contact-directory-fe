@@ -13,8 +13,8 @@ class ContactsPage extends React.Component {
       name: '',
       surname: '',
       lastname: '',
-      gender: '',
-      birthday: '',
+      gender: null,
+      birthday: null,
       country: '',
       isLoading: false,
       isSuccessfullySubmitted: false,
@@ -56,8 +56,20 @@ class ContactsPage extends React.Component {
     this.setState({ [name]: value });
   };
 
+  handleGenderChange = (gender) => {
+    this.setState({ gender });
+  };
+
+  handleBirthdayChange = (birthday) => {
+    this.setState({ birthday });
+  };
+
   handleSearch = () => {
     console.log("search");
+  };
+
+  handleClear = () => {
+    console.log("clear");
   };
 
   handlePageClick = (data) => {
@@ -151,6 +163,11 @@ class ContactsPage extends React.Component {
         dataIndex: 'country',
         key: 'country',
       }];
+    const options = [
+      { value: null, label: 'N/A' },
+      { value: 'male', label: 'male' },
+      { value: 'female', label: 'female' },
+    ];
 
     return (
       <ContactsPageView
@@ -160,10 +177,14 @@ class ContactsPage extends React.Component {
         gender={gender}
         birthday={birthday}
         country={country}
+        options={options}
         isLoading={isLoading}
         isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={this.handleChange}
+        onGenderChange={this.handleGenderChange}
+        onBirthdayChange={this.handleBirthdayChange}
         onSearchClick={this.handleSearch}
+        onClearClick={this.handleClear}
         onCreateClick={this.handleCreate}
         onDeleteClick={this.handleDelete}
         onSendClick={this.handleSendEmail}

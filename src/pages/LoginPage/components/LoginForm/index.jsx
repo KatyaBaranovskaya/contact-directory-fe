@@ -1,7 +1,7 @@
-import React  from 'react';
+import React from 'react';
 import { Link } from '@reach/router';
 
-import { TextInput, Button } from '../../../../components/common';
+import { Button, TextInput } from '../../../../components/common';
 import './style.css';
 
 function LoginForm({ email, password, isLoading, isSuccessfullySubmitted, onChange, onClick }) {

@@ -1,10 +1,22 @@
 .search-form {
     font-family: "Roboto", sans-serif;
+    padding: 3rem 1rem;
+}
+
+.search-form__fields-wrapper {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    padding: 1rem;
-    min-height: 16rem;
+}
+
+.search-form__submit-btn, .search-form__clear-btn {
+    background: #2e99b9;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    border: 0;
+    cursor: pointer;
+    margin: 1rem;
 }
