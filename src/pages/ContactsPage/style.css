@@ -7,6 +7,10 @@
   margin-left: 1rem;
 }
 
+.contacts-page__btn {
+  margin: 1rem;
+}
+
 .contacts-page__table {
   padding: 1rem;
 }

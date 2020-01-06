@@ -1,7 +1,6 @@
 import React  from 'react';
 
-import { TextInput, Button } from '../../../../components/common';
-import Textarea from '../../../../components/common/Textarea';
+import { TextInput, Button, Textarea } from '../../../../components/common';
 import './style.css';
 
 function EmailForm({ emails, title, message, isLoading, isSuccessfullySubmitted, onChange, onClick }) {

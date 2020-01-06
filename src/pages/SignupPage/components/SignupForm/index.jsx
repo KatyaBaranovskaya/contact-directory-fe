@@ -46,6 +46,7 @@ function SignupForm({ name, surname, lastname, email, password, confirmPassword,
         onChange={onChange}
       />
       <Button
+        className="signup-form__btn"
         disabled={isLoading || isSuccessfullySubmitted}
         onClick={onClick}
         text="SUBMIT"
