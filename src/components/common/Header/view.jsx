@@ -4,7 +4,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from '@reach/router';
 
-
 import Button from '../Button';
 import './style.css';
 

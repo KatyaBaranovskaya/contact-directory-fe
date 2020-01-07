@@ -5,7 +5,7 @@ import queryString from 'query-string'
 
 import ContactsPageView from './view';
 import ApiService from '../../services/apiService';
-import { filterSearchParams } from './helpers';
+import { filterSearchParams } from '../../helpers/search';
 
 class ContactsPage extends React.Component {
   constructor(props) {

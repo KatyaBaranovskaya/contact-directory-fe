@@ -1,0 +1,8 @@
+.users-page__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.users-page__table {
+  padding: 1rem;
+}
