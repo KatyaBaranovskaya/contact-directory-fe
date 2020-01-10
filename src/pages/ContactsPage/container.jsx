@@ -122,7 +122,7 @@ class ContactsPage extends React.Component {
   };
 
   handleCreate = () => {
-    console.log("Create");
+    navigate('/contacts/create');
   };
 
   handleDelete = () => {

@@ -9,7 +9,8 @@ import LoginPage from '../pages/LoginPage';
 import SignupPage from '../pages/SignupPage';
 import ContactsPage from '../pages/ContactsPage';
 import UsersPage from '../pages/UsersPage';
-import ContactDetailPage from '../pages/ContactDetailPage';
+import ContactCreationPage from '../pages/ContactCreationPage';
+import ContactEditPage from '../pages/ContactEditPage';
 import EmailPage from '../pages/EmailPage';
 import NotFound from './common/NotFound';
 
@@ -21,7 +22,8 @@ function App() {
         <LoginPage path="/login" />
         <SignupPage path="/signup" />
         <ContactsPage path="/contacts" />
-        <ContactDetailPage path="/contact-detail" />
+        <ContactCreationPage path="/contacts/create" />
+        <ContactEditPage path="/contacts/:contactId" />
         <UsersPage path="/users" />
         <EmailPage path="/email" />
         <NotFound default />

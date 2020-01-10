@@ -1,0 +1,21 @@
+.contact-form {
+    padding: 3rem 5rem;
+}
+
+.contact-form__avatar {
+    background-color: #1f627b;
+    width: 10rem;
+    height: 10rem;
+}
+
+.contact-form__fields-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.contact-form__submit-btn {
+    margin: 1rem;
+}
