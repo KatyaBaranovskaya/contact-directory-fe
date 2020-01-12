@@ -2,20 +2,39 @@
     padding: 3rem 5rem;
 }
 
-.contact-form__avatar {
-    background-color: #1f627b;
-    width: 10rem;
-    height: 10rem;
+.contact-form__photo-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.contact-form__photo-details {
+    border-radius: 50%;
+    width: 15rem;
+}
+
+.contact-form__photo-input {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    opacity: 0.0;
+    border-radius: 50%;
 }
 
 .contact-form__fields-wrapper {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     margin-top: 2rem;
 }
 
-.contact-form__submit-btn {
+.contact-form__btn-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 1rem;
 }

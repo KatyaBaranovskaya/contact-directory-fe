@@ -3,10 +3,15 @@ import React from 'react';
 import { Page, ContactForm } from '../../components/common';
 import './style.css';
 
-function ContactEditPageView() {
+function ContactEditPageView({ initialData, isLoaded, onSubmit }) {
   return (
     <Page>
-      <ContactForm />
+      {isLoaded && (
+        <ContactForm
+          initialData={initialData}
+          onSubmit={onSubmit}
+        />
+      )}
     </Page>
   );
 }

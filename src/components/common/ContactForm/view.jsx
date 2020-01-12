@@ -13,11 +13,19 @@ function ContactFormView({
   onGenderChange,
   onBirthdayChange,
   onMaritalStatusChange,
+  imageSrc,
+  onFileChange,
   onSubmitClick
 }) {
   return (
     <div className="contact-form">
-      <div className="contact-form__avatar">avatar</div>
+      <div className="contact-form__photo-wrapper">
+        <img className="contact-form__photo-details"
+             // src={imageSrc && 'http://certified-disaster.com/wp-content/uploads/2017/05/team-member-1.png'}
+             src={'http://certified-disaster.com/wp-content/uploads/2017/05/team-member-1.png'}
+             alt="your image"/>
+        <input className="contact-form__photo-input" type="file" onChange={onFileChange} />
+      </div>
       <div className="contact-form__fields-wrapper">
         <TextInput
           placeholder="Name"
@@ -46,11 +54,11 @@ function ContactFormView({
           options={genderOptions}
           onChange={onGenderChange}
         />
-        <DateInput
-          placeholder="Birthday"
-          value={data.birthday}
-          onChange={onBirthdayChange}
-        />
+        {/*<DateInput*/}
+          {/*placeholder="Birthday"*/}
+          {/*value={data.birthday}*/}
+          {/*onChange={onBirthdayChange}*/}
+        {/*/>*/}
         <TextInput
           placeholder="Nationality"
           name="nationality"
@@ -128,9 +136,8 @@ function ContactFormView({
           onChange={onChange}
         />
       </div>
-      <div>
+      <div className="contact-form__btn-wrapper">
         <Button
-          className="contact-form__submit-btn"
           disabled={isLoading || isSuccessfullySubmitted}
           onClick={onSubmitClick}
           text="SUBMIT"

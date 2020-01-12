@@ -20,17 +20,21 @@ const DEFAULT_DATA = {
   house: '',
   flat: '',
   postcode: '',
+  photo: '',
 };
 
 class ContactForm extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(props);
     this.state = {
       data: {
         ...DEFAULT_DATA,
         ...props.initialData,
       },
+      imageSrc: '',
+      imageFile: null,
       isLoading: false,
       isSuccessfullySubmitted: false,
     };
@@ -69,14 +73,22 @@ class ContactForm extends React.Component {
     this.setState({ data });
   };
 
+  handleFileChange = () => {
+
+  };
+
   handleSubmit = () => {
     const { data } = this.state;
+    const submittedData = {
+      ...data,
+      birthday: data.birthday && data.birthday.toISOString().split('T')[0],
+    };
 
-    this.props.onSubmit(data);
+    this.props.onSubmit(submittedData);
   };
 
   render() {
-    const { data, isLoading, isSuccessfullySubmitted } = this.state;
+    const { data, imageSrc, isLoading, isSuccessfullySubmitted } = this.state;
     const genderOptions = [
       { value: null, label: 'N/A' },
       { value: 'male', label: 'Male' },
@@ -101,6 +113,8 @@ class ContactForm extends React.Component {
         onGenderChange={this.handleGenderChange}
         onBirthdayChange={this.handleBirthdayChange}
         onMaritalStatusChange={this.handleMaritalStatusChange}
+        imageSrc={imageSrc}
+        onFileChange={this.handleFileChange}
         onSubmitClick={this.handleSubmit}
       />
     );

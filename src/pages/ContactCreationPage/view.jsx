@@ -6,9 +6,7 @@ import './style.css';
 function ContactCreationPageView({ onSubmit }) {
   return (
     <Page>
-      <ContactForm
-        onSubmit={onSubmit}
-      />
+      <ContactForm onSubmit={onSubmit} />
     </Page>
   );
 }
