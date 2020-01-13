@@ -27,36 +27,32 @@ class ContactEditPage extends React.Component {
     })
       .then((response) => {
       const { data } = response;
+      const newState = {
+        data: {
+          ...data,
+          birthday: data.birthday && new Date(data.birthday),
+          imageSrc: null,
+        },
+        isLoaded: true,
+      };
 
       if (data.photo) {
         ApiService.call({
           method: 'get',
           url: `/files/${data.id}`,
         })
-          .catch(() => {
-            return null;
-          })
           .then((file) => {
-            const imageSrc = file
+            newState.data.imageSrc = file.data.entity
               ? 'data:image/PNG;base64,' + file.data.entity
               : null;
 
-            this.setState({
-              data: {
-                ...data,
-                imageSrc,
-              },
-              isLoaded: true,
-            });
+            this.setState(newState);
+          })
+          .catch(() => {
+            this.setState(newState);
           });
       } else {
-        this.setState({
-          data: {
-            ...data,
-            imageSrc: null,
-          },
-          isLoaded: true,
-        });
+        this.setState(newState);
       }
     })
       .catch((error) => {
@@ -65,8 +61,11 @@ class ContactEditPage extends React.Component {
       });
   };
 
-  handleSubmit = (data) => {
+  handleSubmit = (data, photo) => {
     const formData = new FormData();
+    if (photo) {
+      formData.append('photo', photo);
+    }
     formData.append('contact', new Blob([JSON.stringify(data)], {type: 'application/json'}));
 
     ApiService.call({

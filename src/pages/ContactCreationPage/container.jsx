@@ -9,8 +9,11 @@ class ContactCreationPage extends React.Component {
     super(props);
   }
 
-  handleSubmit = (data) => {
+  handleSubmit = (data, photo) => {
     const formData = new FormData();
+    if (photo) {
+      formData.append('photo', photo);
+    }
     formData.append('contact', new Blob([JSON.stringify(data)], {type: 'application/json'}));
 
     ApiService.call({

@@ -27,13 +27,11 @@ class ContactForm extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
     this.state = {
       data: {
         ...DEFAULT_DATA,
         ...props.initialData,
       },
-      imageSrc: '',
       imageFile: null,
       isLoading: false,
       isSuccessfullySubmitted: false,
@@ -73,22 +71,39 @@ class ContactForm extends React.Component {
     this.setState({ data });
   };
 
-  handleFileChange = () => {
-
+  handleFileChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      if (file.type.includes('image/')) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const data = {
+            ...this.state.data,
+            imageSrc: reader.result,
+            photo: file.name,
+          };
+          this.setState({
+            data,
+            imageFile: file,
+          });
+        };
+        reader.readAsDataURL(file);
+      }
+    }
   };
 
   handleSubmit = () => {
-    const { data } = this.state;
+    const { data, imageFile } = this.state;
     const submittedData = {
       ...data,
       birthday: data.birthday && data.birthday.toISOString().split('T')[0],
     };
 
-    this.props.onSubmit(submittedData);
+    this.props.onSubmit(submittedData, imageFile);
   };
 
   render() {
-    const { data, imageSrc, isLoading, isSuccessfullySubmitted } = this.state;
+    const { data, isLoading, isSuccessfullySubmitted } = this.state;
     const genderOptions = [
       { value: null, label: 'N/A' },
       { value: 'male', label: 'Male' },
@@ -113,7 +128,6 @@ class ContactForm extends React.Component {
         onGenderChange={this.handleGenderChange}
         onBirthdayChange={this.handleBirthdayChange}
         onMaritalStatusChange={this.handleMaritalStatusChange}
-        imageSrc={imageSrc}
         onFileChange={this.handleFileChange}
         onSubmitClick={this.handleSubmit}
       />
@@ -128,6 +142,23 @@ ContactForm.defaultProps = {
 ContactForm.propTypes = {
   initialData: PropTypes.shape({
     name: PropTypes.string,
+    surname: PropTypes.string,
+    lastname: PropTypes.string,
+    gender: PropTypes.object,
+    birthday: PropTypes.object,
+    nationality: PropTypes.string,
+    maritalStatus: PropTypes.object,
+    webSite: PropTypes.string,
+    email: PropTypes.string,
+    company: PropTypes.string,
+    country: PropTypes.string,
+    city: PropTypes.string,
+    street: PropTypes.string,
+    house: PropTypes.string,
+    flat: PropTypes.string,
+    postcode: PropTypes.string,
+    photo: PropTypes.string,
+    imageSrc: PropTypes.string,
   }),
   onSubmit: PropTypes.func.isRequired,
 };
