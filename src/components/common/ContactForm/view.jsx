@@ -5,6 +5,7 @@ import './style.css';
 
 function ContactFormView({
   data,
+  errors,
   genderOptions,
   maritalStatusOptions,
   isLoading,
@@ -16,6 +17,8 @@ function ContactFormView({
   onFileChange,
   onSubmitClick
 }) {
+  const hasErrors = Object.keys(errors).length !== 0;
+
   return (
     <div className="contact-form">
       <div className="contact-form__photo-wrapper">
@@ -30,6 +33,7 @@ function ContactFormView({
           name="name"
           type="text"
           value={data.name}
+          error={errors.name}
           onChange={onChange}
         />
         <TextInput
@@ -37,6 +41,7 @@ function ContactFormView({
           name="surname"
           type="text"
           value={data.surname}
+          error={errors.surname}
           onChange={onChange}
         />
         <TextInput
@@ -44,17 +49,20 @@ function ContactFormView({
           name="lastname"
           type="text"
           value={data.lastname}
+          error={errors.lastname}
           onChange={onChange}
         />
         <Dropdown
           placeholder="Gender"
           value={data.gender}
+          error={errors.gender}
           options={genderOptions}
           onChange={onGenderChange}
         />
         <DateInput
           placeholder="Birthday"
           value={data.birthday}
+          error={errors.birthday}
           onChange={onBirthdayChange}
         />
         <TextInput
@@ -62,11 +70,13 @@ function ContactFormView({
           name="nationality"
           type="text"
           value={data.nationality}
+          error={errors.nationality}
           onChange={onChange}
         />
         <Dropdown
           placeholder="Marital status"
           value={data.maritalStatus}
+          error={errors.maritalStatus}
           options={maritalStatusOptions}
           onChange={onMaritalStatusChange}
         />
@@ -75,6 +85,7 @@ function ContactFormView({
           name="webSite"
           type="text"
           value={data.webSite}
+          error={errors.webSite}
           onChange={onChange}
         />
         <TextInput
@@ -82,6 +93,7 @@ function ContactFormView({
           name="email"
           type="text"
           value={data.email}
+          error={errors.email}
           onChange={onChange}
         />
         <TextInput
@@ -89,6 +101,7 @@ function ContactFormView({
           name="company"
           type="text"
           value={data.company}
+          error={errors.company}
           onChange={onChange}
         />
         <TextInput
@@ -96,6 +109,7 @@ function ContactFormView({
           name="country"
           type="text"
           value={data.country}
+          error={errors.country}
           onChange={onChange}
         />
         <TextInput
@@ -103,6 +117,7 @@ function ContactFormView({
           name="city"
           type="text"
           value={data.city}
+          error={errors.city}
           onChange={onChange}
         />
         <TextInput
@@ -110,6 +125,7 @@ function ContactFormView({
           name="street"
           type="text"
           value={data.street}
+          error={errors.street}
           onChange={onChange}
         />
         <TextInput
@@ -117,6 +133,7 @@ function ContactFormView({
           name="house"
           type="text"
           value={data.house}
+          error={errors.house}
           onChange={onChange}
         />
         <TextInput
@@ -124,6 +141,7 @@ function ContactFormView({
           name="flat"
           type="text"
           value={data.flat}
+          error={errors.flat}
           onChange={onChange}
         />
         <TextInput
@@ -131,12 +149,13 @@ function ContactFormView({
           name="postcode"
           type="text"
           value={data.postcode}
+          error={errors.postcode}
           onChange={onChange}
         />
       </div>
       <div className="contact-form__btn-wrapper">
         <Button
-          disabled={isLoading || isSuccessfullySubmitted}
+          disabled={hasErrors || isLoading || isSuccessfullySubmitted}
           onClick={onSubmitClick}
           text="SUBMIT"
         />

@@ -5,20 +5,32 @@ import classNames from 'classnames';
 
 import './style.css';
 
-function DateInput({ placeholder, value, onChange, className }) {
+function DateInput({ placeholder, value, error, onChange, className }) {
+  const styles = {
+    dateInput: classNames('date-input', {
+      'date-input_error': error,
+    }, className),
+  };
+
   return (
-    <DatePicker
-      className={classNames('date-input', className)}
-      placeholderText={placeholder}
-      selected={value}
-      onChange={onChange}
-    />
+    <div className="date-input-wrapper">
+      <DatePicker
+        className={styles.dateInput}
+        placeholderText={placeholder}
+        selected={value}
+        onChange={onChange}
+      />
+      {error && (
+        <span className="date-input__error-text">{error}</span>
+      )}
+    </div>
   );
 }
 
 DateInput.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.object,
+  error: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
 };

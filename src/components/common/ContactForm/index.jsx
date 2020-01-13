@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ContactFormView from './view';
+import schema from './schema';
 
 const DEFAULT_DATA = {
   name: '',
@@ -32,6 +33,7 @@ class ContactForm extends React.Component {
         ...DEFAULT_DATA,
         ...props.initialData,
       },
+      errors: {},
       imageFile: null,
       isLoading: false,
       isSuccessfullySubmitted: false,
@@ -45,6 +47,7 @@ class ContactForm extends React.Component {
       [name]: value,
     };
     this.setState({ data });
+    this.validate(data);
   };
 
   handleGenderChange = (gender) => {
@@ -53,6 +56,7 @@ class ContactForm extends React.Component {
       gender: gender.value,
     };
     this.setState({ data });
+    this.validate(data);
   };
 
   handleBirthdayChange = (birthday) => {
@@ -61,6 +65,7 @@ class ContactForm extends React.Component {
       birthday,
     };
     this.setState({ data });
+    this.validate(data);
   };
 
   handleMaritalStatusChange = (maritalStatus) => {
@@ -69,6 +74,7 @@ class ContactForm extends React.Component {
       maritalStatus: maritalStatus.value,
     };
     this.setState({ data });
+    this.validate(data);
   };
 
   handleFileChange = (event) => {
@@ -92,6 +98,24 @@ class ContactForm extends React.Component {
     }
   };
 
+  validate = (data) => {
+    const { error } = schema.validate(data, { abortEarly: false });
+
+    if (!error) {
+      this.setState({ errors: {} });
+      return true;
+    }
+
+    const errors = error.details.reduce(( acc, { path, message }) => ({
+      ...acc,
+      [path.join('.')]: message,
+    }), {});
+
+    this.setState({ errors });
+
+    return false;
+  };
+
   handleSubmit = () => {
     const { data, imageFile } = this.state;
     const submittedData = {
@@ -99,11 +123,15 @@ class ContactForm extends React.Component {
       birthday: data.birthday && data.birthday.toISOString().split('T')[0],
     };
 
-    this.props.onSubmit(submittedData, imageFile);
+    const isValid = this.validate(submittedData);
+
+    if (isValid) {
+      this.props.onSubmit(submittedData, imageFile);
+    }
   };
 
   render() {
-    const { data, isLoading, isSuccessfullySubmitted } = this.state;
+    const { data, errors, isLoading, isSuccessfullySubmitted } = this.state;
     const genderOptions = [
       { value: null, label: 'N/A' },
       { value: 'male', label: 'Male' },
@@ -120,6 +148,7 @@ class ContactForm extends React.Component {
     return (
       <ContactFormView
         data={data}
+        errors={errors}
         genderOptions={genderOptions}
         maritalStatusOptions={maritalStatusOptions}
         isLoading={isLoading}
