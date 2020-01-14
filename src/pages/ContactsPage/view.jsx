@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "@reach/router";
 
 import { Page, Table, Button } from '../../components/common';
 import SearchForm from './components/SearchForm';
@@ -19,7 +20,6 @@ function ContactsPageView({
   onBirthdayChange,
   onSearchClick,
   onClearClick,
-  onCreateClick,
   onDeleteClick,
   onSendClick,
   columns,
@@ -46,11 +46,7 @@ function ContactsPageView({
         onClearClick={onClearClick}
       />
       <div className="contacts-page__button-wrapper">
-        <Button
-          className="contacts-page__btn"
-          onClick={onCreateClick}
-          text="CREATE"
-        />
+        <Link className="contacts-page__create-link" to="/contacts/create">CREATE</Link>
         <Button
           className="contacts-page__btn"
           onClick={onDeleteClick}

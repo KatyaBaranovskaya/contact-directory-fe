@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { Button, TextInput, DateInput, Dropdown } from '../';
+import TextInput from '../TextInput';
+import Dropdown from '../Dropdown';
+import DateInput from '../DateInput';
+import Button from '../Button';
 import './style.css';
 
 function ContactFormView({

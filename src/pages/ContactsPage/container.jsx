@@ -124,10 +124,6 @@ class ContactsPage extends React.Component {
     this.setState({ checkedList });
   };
 
-  handleCreate = () => {
-    navigate('/contacts/create');
-  };
-
   handleDelete = () => {
     const { checkedList } = this.state;
 
@@ -226,7 +222,6 @@ class ContactsPage extends React.Component {
         onBirthdayChange={this.handleBirthdayChange}
         onSearchClick={this.handleSearch}
         onClearClick={this.handleClear}
-        onCreateClick={this.handleCreate}
         onDeleteClick={this.handleDelete}
         onSendClick={this.handleSendEmail}
         columns={columns}

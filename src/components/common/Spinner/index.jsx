@@ -4,12 +4,12 @@ import Loader from 'react-loader-spinner'
 
 import './style.css';
 
-function Spinner({ type }) {
+function Spinner({ type, color }) {
   return (
-    <div className="loader">
+    <div className="spinner">
       <Loader
         type={type}
-        color="#93b5d0"
+        color={color}
         height={80}
         width={80}
       />
@@ -19,10 +19,12 @@ function Spinner({ type }) {
 
 Spinner.defaultProps = {
   type: 'ThreeDots',
+  color: "#93b5d0",
 };
 
 Spinner.propTypes = {
   type: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export default Spinner;

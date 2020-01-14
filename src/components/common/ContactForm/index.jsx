@@ -101,8 +101,6 @@ class ContactForm extends React.Component {
   validate = (data) => {
     const { error } = schema.validate(data, { abortEarly: false });
 
-    console.log(data);
-
     if (!error) {
       this.setState({ errors: {} });
       return true;
@@ -112,8 +110,6 @@ class ContactForm extends React.Component {
       ...acc,
       [path.join('.')]: message,
     }), {});
-
-    console.log(errors);
 
     this.setState({ errors });
 
