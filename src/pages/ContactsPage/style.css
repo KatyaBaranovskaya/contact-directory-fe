@@ -7,6 +7,22 @@
   margin-left: 1rem;
 }
 
+.contacts-page__create-link {
+  display: inline-block;
+  background: #2e99b9;
+  color: #FFFFFF;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+.contacts-page__create-link:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .contacts-page__btn {
   margin: 1rem;
 }

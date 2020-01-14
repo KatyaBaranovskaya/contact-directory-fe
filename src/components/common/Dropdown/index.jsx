@@ -5,23 +5,35 @@ import classNames from 'classnames';
 
 import './style.css';
 
-function Dropdown({ placeholder, value, options, onChange, className }) {
+function Dropdown({ placeholder, value, error, options, onChange, className }) {
+  const styles = {
+    dropdown: classNames('dropdown', {
+      'dropdown_error': error,
+    }, className),
+  };
+
   return (
-    <ReactDropdown
-      controlClassName={classNames('dropdown', className)}
-      placeholder={placeholder}
-      value={value}
-      options={options}
-      onChange={onChange}
-      arrowClassName="dropdown-arrow"
-      placeholderClassName="dropdown-placeholder"
-    />
+    <div className="dropdown-wrapper">
+      <ReactDropdown
+        controlClassName={styles.dropdown}
+        placeholder={placeholder}
+        value={value}
+        options={options}
+        onChange={onChange}
+        arrowClassName="dropdown-arrow"
+        placeholderClassName="dropdown-placeholder"
+      />
+      {error && (
+        <span className="dropdown__error-text">{error}</span>
+      )}
+    </div>
   );
 }
 
 Dropdown.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
+  error: PropTypes.string,
   options: PropTypes.array,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,

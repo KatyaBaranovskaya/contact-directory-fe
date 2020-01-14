@@ -4,16 +4,27 @@ import classNames from 'classnames';
 
 import './style.css';
 
-function TextInput({ type, placeholder, name, value, onChange, className }) {
+function TextInput({ type, placeholder, name, value, error, onChange, className }) {
+  const styles = {
+    input: classNames('text-input', {
+      'text-input_error': error,
+    }, className),
+  };
+
   return (
-    <input
-      className={classNames('text-input', className)}
-      type={type}
-      placeholder={placeholder}
-      name={name}
-      value={value}
-      onChange={onChange}
-    />
+    <div className="text-input-wrapper">
+      <input
+        className={styles.input}
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
+      {error && (
+        <span className="text-input__error-text">{error}</span>
+      )}
+    </div>
   );
 }
 
@@ -26,6 +37,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
+  error: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
 };

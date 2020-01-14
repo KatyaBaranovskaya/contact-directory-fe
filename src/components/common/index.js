@@ -6,6 +6,8 @@ import Table from './Table';
 import Textarea from './Textarea';
 import TextInput from './TextInput';
 import Toggle from './Toggle';
+import Spinner from './Spinner';
+import ContactForm from './ContactForm';
 
 export {
   Button,
@@ -16,4 +18,6 @@ export {
   Textarea,
   TextInput,
   Toggle,
+  ContactForm,
+  Spinner,
 };

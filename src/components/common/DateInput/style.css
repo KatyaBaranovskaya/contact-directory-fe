@@ -1,10 +1,25 @@
+.date-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 17rem;
+}
+
 .date-input {
     font-size: 14px;
     border: 0;
-    margin: 1rem;
     padding: 1rem;
     border-radius: 0.3rem;
     box-sizing: border-box;
     background: #e4f3ff;
     width: 17rem;
+}
+
+.date-input_error {
+    border: 1px solid red;
+}
+
+.date-input__error-text {
+    color: red;
+    word-wrap: break-word;
 }

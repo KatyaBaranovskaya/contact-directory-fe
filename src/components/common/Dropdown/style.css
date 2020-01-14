@@ -1,12 +1,17 @@
+.dropdown-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 17rem;
+}
+
 .dropdown {
     font-size: 14px;
     border: 0;
-    margin: 1rem;
     padding: 1rem;
     border-radius: 0.3rem;
     box-sizing: border-box;
     background: #e4f3ff;
-    width: 17rem;
 }
 
 .dropdown-arrow {
@@ -17,4 +22,13 @@
 
 .dropdown-placeholder {
     color: #7b777d;
+}
+
+.dropdown_error {
+    border: 1px solid red;
+}
+
+.dropdown__error-text {
+    color: red;
+    word-wrap: break-word;
 }

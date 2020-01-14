@@ -1,7 +1,10 @@
 import React from 'react';
 import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
-import queryString from 'query-string'
+import queryString from 'query-string';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserEdit } from '@fortawesome/free-solid-svg-icons';
+import { Link } from '@reach/router';
 
 import ContactsPageView from './view';
 import ApiService from '../../services/apiService';
@@ -121,10 +124,6 @@ class ContactsPage extends React.Component {
     this.setState({ checkedList });
   };
 
-  handleCreate = () => {
-    console.log("Create");
-  };
-
   handleDelete = () => {
     const { checkedList } = this.state;
 
@@ -161,6 +160,14 @@ class ContactsPage extends React.Component {
         key: 'checkbox',
         render: (value, record) => (
           <input type="checkbox" onChange={() => this.handleCheckboxChange(record)} />
+        )
+      },
+      {
+        title: '',
+        dataIndex: 'icon',
+        key: 'icon',
+        render: (value, record) => (
+          <Link to={`/contacts/${record.id}`}><FontAwesomeIcon icon={faUserEdit} /></Link>
         )
       },
       {
@@ -215,7 +222,6 @@ class ContactsPage extends React.Component {
         onBirthdayChange={this.handleBirthdayChange}
         onSearchClick={this.handleSearch}
         onClearClick={this.handleClear}
-        onCreateClick={this.handleCreate}
         onDeleteClick={this.handleDelete}
         onSendClick={this.handleSendEmail}
         columns={columns}
