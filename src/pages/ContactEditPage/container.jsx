@@ -1,8 +1,8 @@
 import React from 'react';
+import { navigate } from '@reach/router';
 
 import ContactEditPageView from './view';
 import ApiService from '../../services/apiService';
-import { navigate } from '@reach/router';
 
 class ContactEditPage extends React.Component {
   constructor(props) {
@@ -57,7 +57,6 @@ class ContactEditPage extends React.Component {
     })
       .catch((error) => {
         console.log(error);
-        // TODO
       });
   };
 

@@ -1,8 +1,8 @@
 import React from 'react';
+import { navigate } from '@reach/router';
 
 import ContactCreationPageView from './view';
 import ApiService from '../../services/apiService';
-import { navigate } from '@reach/router';
 
 class ContactCreationPage extends React.Component {
   constructor(props) {

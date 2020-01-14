@@ -1,13 +1,14 @@
 import Joi from '@hapi/joi';
 
 const schema = Joi.object({
+  id: Joi.number(),
   name: Joi.string()
     .required(),
   surname: Joi.string()
     .required(),
   lastname: Joi.string()
     .required(),
-  birthday: Joi.string()
+  birthday: Joi.date()
     .required(),
   gender: Joi.string()
     .required(),
@@ -39,7 +40,13 @@ const schema = Joi.object({
     .required(),
   postcode: Joi.string()
     .min(5)
-    .required()
+    .required(),
+  photo: Joi.string()
+    .allow(''),
+  phones: Joi.array(),
+  attachments: Joi.array(),
+  imageSrc: Joi.string()
+    .allow(null),
 });
 
 export default schema;
