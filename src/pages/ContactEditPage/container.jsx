@@ -26,35 +26,37 @@ class ContactEditPage extends React.Component {
       url: `/contacts/${contactId}`,
     })
       .then((response) => {
-      const { data } = response;
-      const newState = {
-        data: {
-          ...data,
-          birthday: data.birthday && new Date(data.birthday),
-          imageSrc: null,
-        },
-        isLoaded: true,
-      };
+        const { data } = response;
+        const newState = {
+          data: {
+            ...data,
+            birthday: data.birthday && new Date(data.birthday),
+            imageSrc: null,
+          },
+          isLoaded: true,
+        };
 
-      if (data.photo) {
-        ApiService.call({
-          method: 'get',
-          url: `/files/${data.id}`,
-        })
-          .then((file) => {
-            newState.data.imageSrc = file.data.entity
-              ? 'data:image/PNG;base64,' + file.data.entity
-              : null;
+        if (!data.photo) {
+          return this.setState(newState);
+        }
 
-            this.setState(newState);
+        if (data.photo) {
+          ApiService.call({
+            method: 'get',
+            url: `/files/${data.id}`,
           })
-          .catch(() => {
-            this.setState(newState);
-          });
-      } else {
-        this.setState(newState);
-      }
-    })
+            .then((file) => {
+              newState.data.imageSrc = file.data.entity
+                ? 'data:image/PNG;base64,' + file.data.entity
+                : null;
+
+              this.setState(newState);
+            })
+            .catch(() => {
+              this.setState(newState);
+            });
+        }
+      })
       .catch((error) => {
         console.log(error);
       });
