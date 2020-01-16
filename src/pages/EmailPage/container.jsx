@@ -5,6 +5,7 @@ import { navigate } from '@reach/router';
 
 import EmailPageView from './view';
 import ApiService from '../../services/apiService';
+import { validate } from '../../helpers/validation';
 import schema from './schema';
 
 class EmailPage extends React.Component {
@@ -49,54 +50,40 @@ class EmailPage extends React.Component {
 
     this.setState({ [name]: value }, () => {
       const { emails, title, message } = this.state;
-      this.validate({ emails, title, message });
+      const { errors } = validate(schema, { emails, title, message });
+      this.setState({ errors });
     });
-  };
-
-  validate = (data) => {
-    const { error } = schema.validate(data, { abortEarly: false });
-
-    if (!error) {
-      this.setState({ errors: {} });
-      return true;
-    }
-
-    const errors = error.details.reduce(( acc, { path, message }) => ({
-      ...acc,
-      [path.join('.')]: message,
-    }), {});
-
-    this.setState({ errors });
-
-    return false;
   };
 
   handleSubmit = () => {
     const { emails, title, message } = this.state;
     const data = { emails, title, message };
 
-    const isValid = this.validate(data);
+    const { errors, isValid } = validate(schema, data);
+    this.setState({ errors });
 
-    if (isValid) {
-      this.setState({ isLoading: true });
-      ApiService.call({
-        method: 'post',
-        url: '/contacts/email',
-        data: {
-          ...data,
-          emails: emails.split(','),
-        }
-      })
-        .then(() => {
-          this.setState({ isLoading: false, isSuccessfullySubmitted: true });
-          NotificationManager.success('Message was sent successfully', 'Successfully');
-          navigate('/contacts');
-        })
-        .catch((error) => {
-          console.log(error);
-          this.setState({ isLoading: false });
-        });
+    if (!isValid) {
+      return;
     }
+
+    this.setState({ isLoading: true });
+    ApiService.call({
+      method: 'post',
+      url: '/contacts/email',
+      data: {
+        ...data,
+        emails: emails.split(','),
+      }
+    })
+      .then(() => {
+        this.setState({ isLoading: false, isSuccessfullySubmitted: true });
+        NotificationManager.success('Message was sent successfully', 'Successfully');
+        navigate('/contacts');
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ isLoading: false });
+      });
   };
 
   render() {

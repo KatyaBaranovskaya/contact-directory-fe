@@ -4,7 +4,7 @@ import Page from '../../components/common/Page';
 import SignupForm from './components/SignupForm';
 import './style.css';
 
-function SignupView({ name, surname, lastname, email, password, confirmPassword, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
+function SignupView({ name, surname, lastname, email, password, confirmPassword, errors, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
   return (
     <Page className="signup-page__content">
       <SignupForm
@@ -14,6 +14,7 @@ function SignupView({ name, surname, lastname, email, password, confirmPassword,
         email={email}
         password={password}
         confirmPassword={confirmPassword}
+        errors={errors}
         isLoading={isLoading}
         isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={onChange}

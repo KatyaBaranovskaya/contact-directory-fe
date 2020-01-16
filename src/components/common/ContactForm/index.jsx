@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ContactFormView from './view';
+import { validate } from '../../../helpers/validation';
 import schema from './schema';
 
 const DEFAULT_DATA = {
@@ -47,7 +48,8 @@ class ContactForm extends React.Component {
       [name]: value,
     };
     this.setState({ data });
-    this.validate(data);
+    const { errors } = validate(schema, data);
+    this.setState({ errors });
   };
 
   handleGenderChange = (gender) => {
@@ -56,8 +58,8 @@ class ContactForm extends React.Component {
       gender: gender.value,
     };
     this.setState({ data });
-    this.validate(data);
-  };
+    const { errors } = validate(schema, data);
+    this.setState({ errors });  };
 
   handleBirthdayChange = (birthday) => {
     const data = {
@@ -65,7 +67,8 @@ class ContactForm extends React.Component {
       birthday,
     };
     this.setState({ data });
-    this.validate(data);
+    const { errors } = validate(schema, data);
+    this.setState({ errors });
   };
 
   handleMaritalStatusChange = (maritalStatus) => {
@@ -74,7 +77,8 @@ class ContactForm extends React.Component {
       maritalStatus: maritalStatus.value,
     };
     this.setState({ data });
-    this.validate(data);
+    const { errors } = validate(schema, data);
+    this.setState({ errors });
   };
 
   handleFileChange = (event) => {
@@ -98,24 +102,6 @@ class ContactForm extends React.Component {
     }
   };
 
-  validate = (data) => {
-    const { error } = schema.validate(data, { abortEarly: false });
-
-    if (!error) {
-      this.setState({ errors: {} });
-      return true;
-    }
-
-    const errors = error.details.reduce(( acc, { path, message }) => ({
-      ...acc,
-      [path.join('.')]: message,
-    }), {});
-
-    this.setState({ errors });
-
-    return false;
-  };
-
   handleSubmit = () => {
     const { data, imageFile } = this.state;
     const submittedData = {
@@ -123,7 +109,8 @@ class ContactForm extends React.Component {
       birthday: data.birthday && data.birthday.toISOString().split('T')[0],
     };
 
-    const isValid = this.validate(submittedData);
+    const { errors, isValid } = validate(schema, submittedData);
+    this.setState({ errors });
 
     if (isValid) {
       this.props.onSubmit(submittedData, imageFile);
