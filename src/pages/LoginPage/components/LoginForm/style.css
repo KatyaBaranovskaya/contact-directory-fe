@@ -17,6 +17,12 @@
     margin-bottom: 1rem;
 }
 
+.login-form__error-text {
+    font-size: 15px;
+    color: red;
+    text-align: center;
+}
+
 .login-form__link {
     font-size: 15px;
     color: #308dae;

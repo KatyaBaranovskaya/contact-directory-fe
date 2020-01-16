@@ -12,6 +12,7 @@ class LoginPage extends React.Component {
     this.state = {
       email: '',
       password: '',
+      error: null,
       isLoading: false,
       isSuccessfullySubmitted: false,
     };
@@ -33,22 +34,29 @@ class LoginPage extends React.Component {
       isAuthorizedRequest: false
     })
       .then((response) => {
-        this.setState({ isLoading: false, isSuccessfullySubmitted: true });
+        this.setState({ isLoading: false, isSuccessfullySubmitted: true, error: null });
         AppLifecycle.emit(APP_LIFE_CYCLE_EVENTS.LOGIN, response.data.token, () => navigate('/'));
       })
       .catch((error) => {
         console.log(error);
-        this.setState({ isLoading: false });
+        const newState = { isLoading: false };
+        if (error.response.status === 401) {
+          newState.error = 'Credentials incorrect, please check login and password';
+        } else {
+          //navigate to error
+        }
+        this.setState(newState);
       });
   };
 
   render() {
-    const { email, password, isLoading, isSuccessfullySubmitted } = this.state;
+    const { email, password, error, isLoading, isSuccessfullySubmitted } = this.state;
 
     return (
       <LoginPageView
         email={email}
         password={password}
+        error={error}
         isLoading={isLoading}
         isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={this.handleChange}
