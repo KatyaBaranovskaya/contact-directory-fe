@@ -47,9 +47,8 @@ class ContactForm extends React.Component {
       ...this.state.data,
       [name]: value,
     };
-    this.setState({ data });
     const { errors } = validate(schema, data);
-    this.setState({ errors });
+    this.setState({ data, errors });
   };
 
   handleGenderChange = (gender) => {
@@ -57,18 +56,17 @@ class ContactForm extends React.Component {
       ...this.state.data,
       gender: gender.value,
     };
-    this.setState({ data });
     const { errors } = validate(schema, data);
-    this.setState({ errors });  };
+    this.setState({ data, errors });
+  };
 
   handleBirthdayChange = (birthday) => {
     const data = {
       ...this.state.data,
       birthday,
     };
-    this.setState({ data });
     const { errors } = validate(schema, data);
-    this.setState({ errors });
+    this.setState({ data, errors });
   };
 
   handleMaritalStatusChange = (maritalStatus) => {
@@ -76,9 +74,8 @@ class ContactForm extends React.Component {
       ...this.state.data,
       maritalStatus: maritalStatus.value,
     };
-    this.setState({ data });
     const { errors } = validate(schema, data);
-    this.setState({ errors });
+    this.setState({ data, errors });
   };
 
   handleFileChange = (event) => {

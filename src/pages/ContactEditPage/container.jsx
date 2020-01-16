@@ -40,22 +40,20 @@ class ContactEditPage extends React.Component {
           return this.setState(newState);
         }
 
-        if (data.photo) {
-          ApiService.call({
-            method: 'get',
-            url: `/files/${data.id}`,
-          })
-            .then((file) => {
-              newState.data.imageSrc = file.data.entity
-                ? 'data:image/PNG;base64,' + file.data.entity
-                : null;
+        ApiService.call({
+          method: 'get',
+          url: `/files/${data.id}`,
+        })
+          .then((file) => {
+            newState.data.imageSrc = file.data.entity
+              ? 'data:image/PNG;base64,' + file.data.entity
+              : null;
 
-              this.setState(newState);
-            })
-            .catch(() => {
-              this.setState(newState);
-            });
-        }
+            this.setState(newState);
+          })
+          .catch(() => {
+            this.setState(newState);
+          });
       })
       .catch((error) => {
         console.log(error);

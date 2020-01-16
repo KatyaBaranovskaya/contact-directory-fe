@@ -2,6 +2,7 @@ import React from 'react';
 import queryString from 'query-string'
 import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
+import pick from 'lodash/pick';
 
 import EmailPageView from './view';
 import ApiService from '../../services/apiService';
@@ -46,13 +47,14 @@ class EmailPage extends React.Component {
   };
 
   handleChange = (event) => {
+    const data = pick(this.state, ['emails', 'title', 'message']);
     const { name, value } = event.target;
 
-    this.setState({ [name]: value }, () => {
-      const { emails, title, message } = this.state;
-      const { errors } = validate(schema, { emails, title, message });
-      this.setState({ errors });
-    });
+    data[name] = value;
+
+    const { errors } = validate(schema, data);
+
+    this.setState({ [name]: value, errors });
   };
 
   handleSubmit = () => {

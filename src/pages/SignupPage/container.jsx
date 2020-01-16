@@ -1,5 +1,6 @@
 import React from 'react';
 import {navigate} from '@reach/router';
+import pick from 'lodash/pick';
 
 import SignupView from './view';
 import ApiService from '../../services/apiService';
@@ -24,13 +25,14 @@ class SignupPage extends React.Component {
   }
 
   handleChange = (event) => {
+    const data = pick(this.state, ['name', 'surname', 'lastname', 'email', 'password', 'confirmPassword']);
     const { name, value } = event.target;
 
-    this.setState({ [name]: value }, () => {
-      const { name, surname, lastname, email, password, confirmPassword } = this.state;
-      const { errors } = validate(schema, { name, surname, lastname, email, password, confirmPassword });
-      this.setState({ errors });
-    });
+    data[name] = value;
+
+    const { errors } = validate(schema, data);
+
+    this.setState({ [name]: value, errors });
   };
 
   handleSubmit = () => {
