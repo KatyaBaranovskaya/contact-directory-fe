@@ -26,17 +26,20 @@ class ContactEditPage extends React.Component {
       url: `/contacts/${contactId}`,
     })
       .then((response) => {
-      const { data } = response;
-      const newState = {
-        data: {
-          ...data,
-          birthday: data.birthday && new Date(data.birthday),
-          imageSrc: null,
-        },
-        isLoaded: true,
-      };
+        const { data } = response;
+        const newState = {
+          data: {
+            ...data,
+            birthday: data.birthday && new Date(data.birthday),
+            imageSrc: null,
+          },
+          isLoaded: true,
+        };
 
-      if (data.photo) {
+        if (!data.photo) {
+          return this.setState(newState);
+        }
+
         ApiService.call({
           method: 'get',
           url: `/files/${data.id}`,
@@ -51,10 +54,7 @@ class ContactEditPage extends React.Component {
           .catch(() => {
             this.setState(newState);
           });
-      } else {
-        this.setState(newState);
-      }
-    })
+      })
       .catch((error) => {
         console.log(error);
       });

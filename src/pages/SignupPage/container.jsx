@@ -1,8 +1,11 @@
 import React from 'react';
 import {navigate} from '@reach/router';
+import pick from 'lodash/pick';
 
 import SignupView from './view';
 import ApiService from '../../services/apiService';
+import { validate } from '../../helpers/validation';
+import schema from './schema';
 
 class SignupPage extends React.Component {
   constructor(props) {
@@ -15,33 +18,34 @@ class SignupPage extends React.Component {
       email: '',
       password: '',
       confirmPassword: '',
+      errors: {},
       isLoading: false,
       isSuccessfullySubmitted: false,
     };
   }
 
   handleChange = (event) => {
+    const data = pick(this.state, ['name', 'surname', 'lastname', 'email', 'password', 'confirmPassword']);
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+
+    data[name] = value;
+
+    const { errors } = validate(schema, data);
+
+    this.setState({ [name]: value, errors });
   };
 
   handleSubmit = () => {
-    const { isValid } = this.validate();
-
-    if (isValid) {
-      this.submit();
-    }
-  };
-
-  validate = () => {
-    return {
-      errors: [],
-      isValid: true,
-    };
-  };
-
-  submit = () => {
     const { name, surname, lastname, email, password, confirmPassword } = this.state;
+    const data = { name, surname, lastname, email, password, confirmPassword };
+
+    const { errors, isValid } = validate(schema, data);
+    this.setState({ errors });
+
+    if (!isValid) {
+      return;
+    }
+
     this.setState({ isLoading: true });
     ApiService.call({
       method: 'post',
@@ -61,7 +65,7 @@ class SignupPage extends React.Component {
   };
 
   render() {
-    const { name, surname, lastname, email, password, confirmPassword, isLoading, isSuccessfullySubmitted } = this.state;
+    const { name, surname, lastname, email, password, confirmPassword, errors, isLoading, isSuccessfullySubmitted } = this.state;
 
     return (
       <SignupView
@@ -71,6 +75,7 @@ class SignupPage extends React.Component {
         email={email}
         password={password}
         confirmPassword={confirmPassword}
+        errors={errors}
         isLoading={isLoading}
         isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={this.handleChange}

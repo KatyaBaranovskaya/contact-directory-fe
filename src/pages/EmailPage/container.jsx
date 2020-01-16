@@ -2,9 +2,12 @@ import React from 'react';
 import queryString from 'query-string'
 import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
+import pick from 'lodash/pick';
 
 import EmailPageView from './view';
 import ApiService from '../../services/apiService';
+import { validate } from '../../helpers/validation';
+import schema from './schema';
 
 class EmailPage extends React.Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class EmailPage extends React.Component {
       emails: '',
       title: '',
       message: '',
+      errors: {},
       isLoading: false,
       isSuccessfullySubmitted: false,
     };
@@ -43,32 +47,35 @@ class EmailPage extends React.Component {
   };
 
   handleChange = (event) => {
+    const data = pick(this.state, ['emails', 'title', 'message']);
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+
+    data[name] = value;
+
+    const { errors } = validate(schema, data);
+
+    this.setState({ [name]: value, errors });
   };
 
   handleSubmit = () => {
-    const { isValid } = this.validate();
-
-    if (isValid) {
-      this.submit();
-    }
-  };
-
-  validate = () => {
-    return {
-      errors: [],
-      isValid: true,
-    };
-  };
-
-  submit = () => {
     const { emails, title, message } = this.state;
+    const data = { emails, title, message };
+
+    const { errors, isValid } = validate(schema, data);
+    this.setState({ errors });
+
+    if (!isValid) {
+      return;
+    }
+
     this.setState({ isLoading: true });
     ApiService.call({
       method: 'post',
       url: '/contacts/email',
-      data: { emails: emails.split(','), title, message }
+      data: {
+        ...data,
+        emails: emails.split(','),
+      }
     })
       .then(() => {
         this.setState({ isLoading: false, isSuccessfullySubmitted: true });
@@ -82,13 +89,14 @@ class EmailPage extends React.Component {
   };
 
   render() {
-    const { emails, title, message, isLoading, isSuccessfullySubmitted } = this.state;
+    const { emails, title, message, errors, isLoading, isSuccessfullySubmitted } = this.state;
 
     return (
       <EmailPageView
         emails={emails}
         title={title}
         message={message}
+        errors={errors}
         isLoading={isLoading}
         isSuccessfullySubmitted={isSuccessfullySubmitted}
         onChange={this.handleChange}

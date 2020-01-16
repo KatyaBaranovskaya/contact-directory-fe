@@ -6,13 +6,14 @@ import './style.css';
 
 function TextInput({ type, placeholder, name, value, error, onChange, className }) {
   const styles = {
+    wrapper: classNames('text-input-wrapper', className),
     input: classNames('text-input', {
       'text-input_error': error,
-    }, className),
+    }),
   };
 
   return (
-    <div className="text-input-wrapper">
+    <div className={styles.wrapper}>
       <input
         className={styles.input}
         type={type}
