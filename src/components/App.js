@@ -13,6 +13,7 @@ import ContactCreationPage from '../pages/ContactCreationPage';
 import ContactEditPage from '../pages/ContactEditPage';
 import EmailPage from '../pages/EmailPage';
 import NotFound from './common/NotFound';
+import ErrorPage from '../pages/ErrorPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <ContactEditPage path="/contacts/:contactId" />
         <UsersPage path="/users" />
         <EmailPage path="/email" />
+        <ErrorPage path="/error" />
         <NotFound default />
       </Router>
       <NotificationContainer/>
