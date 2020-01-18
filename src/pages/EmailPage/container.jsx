@@ -85,6 +85,7 @@ class EmailPage extends React.Component {
       .catch((error) => {
         console.log(error);
         this.setState({ isLoading: false });
+        navigate(`/error?error=${error.response.data}`);
       });
   };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import queryString from 'query-string';
+import { navigate } from '@reach/router';
 
 import UsersPageView from './view';
 import ApiService from '../../services/apiService';
@@ -51,6 +52,7 @@ class UsersPage extends React.Component {
           data: [],
           pageCount: 0,
         });
+        navigate(`/error?error=${error.response.data}`);
       });
   };
 
@@ -100,6 +102,7 @@ class UsersPage extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        navigate(`/error?error=${error.response.data}`);
       });
   };
 
