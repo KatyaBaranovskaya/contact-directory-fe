@@ -59,7 +59,7 @@ class ContactsPage extends React.Component {
           data: [],
           pageCount: 0,
         });
-        navigate(`/error?error=${error.response.data}`);
+        navigate(`/error?error=${error.response.data.message}`);
       });
   };
 
@@ -139,7 +139,7 @@ class ContactsPage extends React.Component {
       })
       .catch((error) => {
         console.log(error);
-        navigate(`/error?error=${error.response.data}`);
+        navigate(`/error?error=${error.response.data.message}`);
       });
   };
 
