@@ -7,11 +7,11 @@ class ErrorPage extends React.Component {
   constructor(props) {
     super(props);
 
-    const queryParams = queryString.parse(this.props.location.search);
+    const queryParams = queryString.parse(props.location.search);
     const { error } = queryParams;
 
     this.state = {
-      error: error ? error : null,
+      error: error || null,
     };
   }
 
