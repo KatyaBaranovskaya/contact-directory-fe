@@ -39,13 +39,15 @@ class LoginPage extends React.Component {
       })
       .catch((error) => {
         console.log(error);
-        const newState = { isLoading: false };
-        if (error.response.status === 401) {
-          newState.error = 'Credentials incorrect, please check login and password';
-        } else {
-          navigate(`/error?error=${error.response.data.message}`);
+
+        if (error.response.status !== 401) {
+          return navigate(`/error?error=${error.response.data.message}`);
         }
-        this.setState(newState);
+
+        this.setState({
+          isLoading: false,
+          error: 'Credentials incorrect, please check login and password',
+        });
       });
   };
 
