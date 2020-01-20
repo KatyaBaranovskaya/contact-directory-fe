@@ -1,4 +1,5 @@
 import React from 'react';
+import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
 
 import ContactEditPageView from './view';
@@ -57,6 +58,7 @@ class ContactEditPage extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        navigate(`/error?error=${error.response.data.message}`);
       });
   };
 
@@ -74,10 +76,12 @@ class ContactEditPage extends React.Component {
       data: formData
     })
       .then(() => {
+        NotificationManager.success('Contact was updated successfully', 'Successfully');
         navigate('/contacts');
       })
       .catch((error) => {
         console.log(error);
+        navigate(`/error?error=${error.response.data.message}`);
       });
   };
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import {navigate} from '@reach/router';
+import { NotificationManager } from 'react-notifications';
+import { navigate } from '@reach/router';
 import pick from 'lodash/pick';
 
 import SignupView from './view';
@@ -56,11 +57,13 @@ class SignupPage extends React.Component {
     })
       .then(() => {
         this.setState({ isLoading: false, isSuccessfullySubmitted: true });
-        navigate('/');
+        NotificationManager.success('Successfully registered', 'Successfully');
+        navigate('/login');
       })
       .catch((error) => {
         console.log(error);
         this.setState({ isLoading: false });
+        navigate(`/error?error=${error.response.data.message}`);
       });
   };
 

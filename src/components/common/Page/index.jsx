@@ -10,15 +10,20 @@ import './style.css';
 function Page({ className, children }) {
   return (
     <TokenContext.Consumer>
-      {(tokenInfo) => (
-        <div className="page__wrapper">
-          <Header className="page__header" isAuthorized={Boolean(tokenInfo.user)} />
-          <div className={classNames('page__content', className)}>
-            {children}
+      {(tokenInfo) => {
+        const isAuthorized = Boolean(tokenInfo.user);
+        const role = isAuthorized ? tokenInfo.user.role : null;
+
+        return (
+          <div className="page__wrapper">
+            <Header className="page__header" isAuthorized={isAuthorized} role={role} />
+            <div className={classNames('page__content', className)}>
+              {children}
+            </div>
+            <Footer className="page__footer" />
           </div>
-          <Footer className="page__footer" />
-        </div>
-      )}
+        );
+      }}
     </TokenContext.Consumer>
   );
 }

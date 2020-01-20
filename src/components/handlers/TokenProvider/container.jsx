@@ -1,4 +1,5 @@
 import React from 'react';
+import jwtDecode from 'jwt-decode';
 
 import { APP_LIFE_CYCLE_EVENTS, AppLifecycle } from '../../../services/events/appLifecycle';
 import ApiService from '../../../services/apiService';
@@ -46,8 +47,12 @@ class TokenProvider extends React.Component {
     const newState = { isReady: true };
 
     if (token) {
-      const user = {};
-      // parse token if it exists
+      const jwtDecoded = jwtDecode(token);
+      const user = {
+        id: jwtDecoded.jti,
+        email: jwtDecoded.sub,
+        role: jwtDecoded.permissions,
+      };
       newState.tokenInfo = {
         token,
         user,

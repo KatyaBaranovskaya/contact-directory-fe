@@ -4,7 +4,7 @@ import { Link } from '@reach/router';
 import { Button, TextInput } from '../../../../components/common';
 import './style.css';
 
-function LoginForm({ email, password, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
+function LoginForm({ email, password, error, isLoading, isSuccessfullySubmitted, onChange, onClick }) {
   return (
     <div className="login-form">
       <h3 className="login-form__title">SIGN IN</h3>
@@ -21,6 +21,9 @@ function LoginForm({ email, password, isLoading, isSuccessfullySubmitted, onChan
         value={password}
         onChange={onChange}
       />
+      {error && (
+        <span className="login-form__error-text">{error}</span>
+      )}
       <Button
         className="login-form__btn"
         disabled={isLoading || isSuccessfullySubmitted}

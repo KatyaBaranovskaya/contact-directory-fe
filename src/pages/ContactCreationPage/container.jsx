@@ -1,4 +1,5 @@
 import React from 'react';
+import { NotificationManager } from 'react-notifications';
 import { navigate } from '@reach/router';
 
 import ContactCreationPageView from './view';
@@ -23,10 +24,12 @@ class ContactCreationPage extends React.Component {
       data: formData
     })
       .then(() => {
+        NotificationManager.success('Contact was created successfully', 'Successfully');
         navigate('/contacts');
       })
       .catch((error) => {
         console.log(error);
+        navigate(`/error?error=${error.response.data.message}`);
       });
   };
 
