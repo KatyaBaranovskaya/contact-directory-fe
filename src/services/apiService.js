@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { navigate } from '@reach/router';
+import { APP_LIFE_CYCLE_EVENTS, AppLifecycle } from '../services/events/appLifecycle';
 
 const API_URL = 'http://localhost:8080/api';
 
@@ -38,8 +38,8 @@ class ApiService {
 
     return axios(enhanceWithUrl(newConfig))
       .catch((error) => {
-        if (error.status === 401) {
-          navigate('/login');
+        if (isAuthorizedRequest && error.response.status === 401) {
+          AppLifecycle.emit(APP_LIFE_CYCLE_EVENTS.LOGOUT);
         }
         throw error;
       });

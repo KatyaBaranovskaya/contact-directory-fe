@@ -11,11 +11,12 @@ class HeaderContainer extends React.Component {
   };
 
   render() {
-    const { isAuthorized, className } = this.props;
+    const { isAuthorized, role, className } = this.props;
 
     return (
       <HeaderView
         isAuthorized={isAuthorized}
+        role={role}
         className={className}
         onLogoutClick={this.handleLogoutClick}
       />
